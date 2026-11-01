@@ -8,3 +8,5 @@ logs/*.log
 data/
 *.db
 admin_panel_resend/
+frontend/node_modules/
+frontend/dist/
