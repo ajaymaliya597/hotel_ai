@@ -1,0 +1,994 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#12343d">
+<meta name="nova-ui-version" content="context-aware-room-followup-20261026">
+<meta name="description" content="Explore room options, check live availability, and plan your stay with the Nova hotel booking assistant.">
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<title>Nova Stays | Thoughtful stays, made simple</title>
+<style>
+:root{color-scheme:light;--paper:#fbfaf7;--cream:#f3f0e9;--surface:#fff;--ink:#172f38;--navy:#12343d;--navy-deep:#102a32;--teal:#347c77;--teal-dark:#286b66;--teal-wash:#eaf4f1;--line:#e2e5df;--muted:#68797c;--muted-dark:#4e6266;--gold:#c6a56b;--red:#a83c48;--shadow:0 20px 60px rgba(22,47,56,.09);--radius:22px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:100px}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}body.modal-open{overflow:hidden}button,input,select,textarea{font:inherit}button{cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #5da69d;outline-offset:3px}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.shell{max-width:1400px;margin:auto;padding:0 34px 56px}.announcement{display:flex;align-items:center;justify-content:center;gap:8px;padding:8px 18px;background:var(--navy-deep);color:#e8f4ef;text-align:center;font-size:11px;letter-spacing:.035em}.announcement .spark{color:#b6d8c8;font-size:14px}.top{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:28px;justify-content:space-between;margin:0 -34px;padding:17px 34px;background:rgba(251,250,247,.94);border-bottom:1px solid rgba(222,226,219,.86);backdrop-filter:blur(18px)}.brand{display:flex;align-items:center;gap:11px;flex-shrink:0}.logo{width:43px;height:43px;border-radius:14px;display:grid;place-items:center;background:var(--navy);color:#f8f4e9;font-family:Georgia,serif;font-size:26px;font-weight:700;box-shadow:0 7px 16px #163b4520}.brand-wordmark{font-size:20px;font-weight:780;letter-spacing:-.055em;line-height:1;color:var(--navy)}.brand-wordmark small{display:block;margin-top:4px;font-size:8px;letter-spacing:.28em;color:var(--teal);font-weight:850}.nav-links{display:flex;align-items:center;justify-content:center;gap:23px;flex:1}.nav-links a{color:#53656a;font-size:12px;font-weight:680;white-space:nowrap;transition:color .18s}.nav-links a:hover{color:var(--teal-dark)}.nav-actions{display:flex;align-items:center;gap:12px;flex-shrink:0}.status{display:flex;align-items:center;gap:8px;padding:8px 11px;color:#5b6d70;font-size:11px;border:1px solid var(--line);border-radius:999px;background:#fff}.dot{width:7px;height:7px;border-radius:50%;background:#98a5a2;flex-shrink:0}.dot.live{background:#3e9a79;box-shadow:0 0 0 4px #3e9a791f}.nav-toggle{display:none;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--navy)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid transparent;border-radius:12px;padding:12px 17px;font-size:12px;font-weight:800;letter-spacing:.005em;line-height:1.2;transition:transform .18s ease,box-shadow .18s ease,background .18s ease,border-color .18s ease;color:var(--ink)}.btn:hover:not(:disabled){transform:translateY(-2px)}.btn:disabled{opacity:.48;cursor:not-allowed;transform:none}.primary{background:var(--teal);color:white;box-shadow:0 7px 18px #347c7725}.primary:hover:not(:disabled){background:var(--teal-dark);box-shadow:0 10px 24px #347c7735}.secondary{background:#fff;border-color:#dfe5df;color:var(--navy)}.secondary:hover:not(:disabled){background:#f3f7f4;border-color:#c9d9d2}.danger{color:#a83c48}.btn-dark{background:var(--navy);color:white;box-shadow:0 10px 26px #102f3a26}.btn-dark:hover:not(:disabled){background:#1b4c55}.btn-light{background:#fff;color:var(--navy)}.eyebrow{font-size:10px;letter-spacing:.21em;text-transform:uppercase;font-weight:850;color:var(--teal)}
+.hero{position:relative;isolation:isolate;min-height:540px;display:flex;align-items:center;overflow:hidden;border-radius:27px;background:#173740 url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=2200&q=88') center 55%/cover no-repeat;color:#fff;margin-top:20px}.hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(12,37,43,.88) 0%,rgba(13,42,48,.68) 43%,rgba(13,42,48,.08) 100%),linear-gradient(0deg,rgba(13,36,42,.35),transparent 45%)}.hero-content{max-width:680px;padding:62px 66px 94px}.hero-kicker{display:inline-flex;align-items:center;gap:10px;margin-bottom:21px;padding:9px 12px;border:1px solid #ffffff45;border-radius:999px;background:#ffffff12;backdrop-filter:blur(10px);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:#ecf4ef}.hero-kicker .kicker-dot{width:6px;height:6px;border-radius:50%;background:#b8decf}.hero h1{margin:0;max-width:660px;font-family:Georgia,"Times New Roman",serif;font-size:clamp(45px,5.6vw,76px);line-height:.99;font-weight:500;letter-spacing:-.055em;text-wrap:balance}.hero h1 em{font-weight:400;color:#c8e1d6}.hero p{max-width:490px;margin:22px 0 25px;color:#e2ece7;font-size:15px;line-height:1.8}.hero-actions{display:flex;align-items:center;gap:20px;flex-wrap:wrap}.hero .btn{padding:15px 20px}.hero-link{display:inline-flex;align-items:center;gap:9px;font-size:12px;font-weight:750;color:#fff;border-bottom:1px solid #ffffff75;padding:8px 0}.hero-link span{color:#c8e1d6;font-size:18px;transition:transform .18s}.hero-link:hover span{transform:translateX(4px)}.hero-caption{position:absolute;right:30px;bottom:26px;padding:11px 14px;border:1px solid #ffffff45;border-radius:13px;background:#0e2d35a8;backdrop-filter:blur(10px);font-size:10px;line-height:1.5;color:#e6f0eb}.hero-caption strong{display:block;font-size:12px;color:#fff;margin-bottom:1px}
+.search-card{position:relative;z-index:2;max-width:1160px;margin:-47px auto 0;padding:20px 22px 17px;border:1px solid #e5e6df;border-radius:19px;background:#fff;box-shadow:0 22px 65px #122f3820}.search-intro{display:flex;align-items:center;justify-content:space-between;gap:15px;margin:0 0 15px}.search-title{font-size:15px;letter-spacing:-.025em;font-weight:800}.search-subtitle{font-size:11px;color:var(--muted)}.search-live{display:inline-flex;align-items:center;gap:7px;font-size:10px;color:var(--teal-dark);font-weight:800;white-space:nowrap}.search-live:before{content:"";display:block;width:6px;height:6px;background:#449983;border-radius:50%}.search-grid{display:grid;grid-template-columns:1.1fr 1.1fr .7fr auto;gap:10px;align-items:end}.search-field{display:flex;flex-direction:column;gap:6px;min-width:0;padding:2px 12px;border-right:1px solid #e9ebe5}.search-field:last-of-type{border-right:0}.search-field label{font-size:9px;color:#708082;letter-spacing:.13em;text-transform:uppercase;font-weight:850}.search-field input,.search-field select{width:100%;min-width:0;border:0;background:transparent;color:var(--ink);padding:4px 0;font-size:13px;font-weight:650;outline:none}.search-field input:focus-visible,.search-field select:focus-visible{outline:0;box-shadow:0 2px 0 var(--teal)}.search-submit{min-height:49px;padding:14px 19px;white-space:nowrap}.hero-search-notice{display:none;padding:8px 12px;margin:8px 0 0;border-radius:9px;background:#fff0ed;color:#9b4138;font-size:11px}.hero-search-notice.show{display:block}.search-note{margin:11px 1px 0;font-size:10px;color:#778587}
+.section{padding:84px 0 16px}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:29px}.section-head-copy{max-width:610px}.section-head h2,.feature-copy h2,.assistant-promo h2{margin:9px 0 12px;color:var(--navy);font-family:Georgia,"Times New Roman",serif;font-size:clamp(30px,3.4vw,46px);font-weight:500;letter-spacing:-.045em;line-height:1.06;text-wrap:balance}.section-head p{max-width:580px;margin:0;color:var(--muted);font-size:13px;line-height:1.8}.text-link{display:inline-flex;align-items:center;gap:10px;border:0;border-bottom:1px solid #a9c4bc;padding:0 0 8px;background:none;color:var(--teal-dark);font-size:12px;font-weight:850;white-space:nowrap}.text-link span{font-size:17px;transition:transform .2s}.text-link:hover span{transform:translateX(4px)}.room-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:19px}.room-tile{min-width:0;border:1px solid #e5e7e1;border-radius:18px;background:#fff;overflow:hidden;box-shadow:0 5px 22px #1e3d4008;transition:transform .25s ease,box-shadow .25s ease,border-color .25s}.room-tile:hover{transform:translateY(-5px);box-shadow:0 18px 38px #173c3a13;border-color:#cfded5}.room-image{position:relative;overflow:hidden;height:220px;background:#e3e6de}.room-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}.room-tile:hover .room-image img{transform:scale(1.045)}.room-tag{position:absolute;top:14px;left:14px;padding:7px 10px;border-radius:999px;background:#fff;color:#2f514e;font-size:9px;text-transform:uppercase;letter-spacing:.1em;font-weight:850;box-shadow:0 4px 16px #0001}.room-info{padding:19px 20px 20px}.room-title{font-size:17px;font-weight:800;letter-spacing:-.03em;color:var(--navy)}.room-description{min-height:42px;margin:8px 0 16px;color:var(--muted);font-size:12px;line-height:1.7}.room-info-bottom{display:flex;justify-content:space-between;align-items:center;gap:10px;padding-top:13px;border-top:1px solid #edf0e9}.room-info-bottom span{color:#728082;font-size:10px}.room-info-bottom .text-link{font-size:10px;padding-bottom:4px}
+.disclaimer{font-size:10px;color:#819091;margin-top:15px}.feature-band{display:grid;grid-template-columns:1.04fr .96fr;gap:50px;align-items:center;padding:80px 0 20px}.feature-visual{position:relative;min-height:430px;border-radius:22px;overflow:hidden;background:#e4e6de}.feature-visual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.feature-visual:after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,#102f3a90,transparent 55%)}.visual-note{position:absolute;z-index:1;left:24px;right:24px;bottom:22px;padding:18px 20px;border:1px solid #ffffff42;border-radius:15px;background:#14353db5;backdrop-filter:blur(9px);color:#eaf2ec}.visual-note span{display:block;margin-bottom:6px;color:#c3ded1;font-size:9px;letter-spacing:.17em;text-transform:uppercase;font-weight:850}.visual-note strong{display:block;max-width:330px;font-family:Georgia,serif;font-size:24px;font-weight:500;line-height:1.2}.feature-copy{padding:18px 0}.feature-copy>p{max-width:510px;color:var(--muted);font-size:13px;line-height:1.9}.feature-list{display:grid;gap:16px;margin-top:24px}.feature-item{display:grid;grid-template-columns:42px 1fr;gap:13px;align-items:start}.feature-icon{width:40px;height:40px;display:grid;place-items:center;border:1px solid #d5e4dc;border-radius:13px;background:#edf5f0;color:var(--teal-dark);font-size:17px}.feature-item strong{display:block;margin-bottom:4px;color:var(--navy);font-size:13px}.feature-item p{margin:0;color:var(--muted);font-size:11px;line-height:1.7}
+.experience-strip{padding:72px 0 12px}.experience-header{text-align:center;max-width:650px;margin:0 auto 34px}.experience-header h2{margin:9px 0 11px;font-family:Georgia,serif;font-weight:500;letter-spacing:-.045em;line-height:1.1;font-size:clamp(31px,3.5vw,45px);color:var(--navy)}.experience-header p{margin:0;color:var(--muted);font-size:13px;line-height:1.8}.experience-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.experience-card{padding:21px 19px;border:1px solid #e3e7df;border-radius:16px;background:#fff;transition:transform .2s,border-color .2s}.experience-card:hover{transform:translateY(-3px);border-color:#bbd5cb}.experience-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;background:#edf5f1;color:var(--teal-dark);font-size:19px}.experience-card h3{margin:0 0 8px;font-size:13px;color:var(--navy)}.experience-card p{margin:0;color:var(--muted);font-size:11px;line-height:1.8}
+.gallery-section{padding:80px 0 8px}.gallery-grid{display:grid;grid-template-columns:1.1fr .9fr .9fr;grid-template-rows:210px 160px;gap:14px}.gallery-image{position:relative;overflow:hidden;border-radius:17px;background:#e4e7df}.gallery-image:first-child{grid-row:span 2}.gallery-image img{width:100%;height:100%;object-fit:cover;transition:transform .6s}.gallery-image:hover img{transform:scale(1.04)}.gallery-image:after{content:"";position:absolute;inset:40% 0 0;background:linear-gradient(0deg,#112f38a8,transparent)}.gallery-caption{position:absolute;z-index:1;left:17px;bottom:15px;color:#fff;font-size:12px;font-weight:800;text-shadow:0 2px 10px #0004}.gallery-caption small{display:block;margin-bottom:4px;font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:#d6e8de}
+.assistant-promo{display:grid;grid-template-columns:1fr auto;align-items:center;gap:30px;margin-top:84px;padding:41px 44px;border:1px solid #d9e7df;border-radius:23px;background:linear-gradient(118deg,#edf5ef 0%,#f5f4ed 58%,#e7f1ed 100%);overflow:hidden}.assistant-promo .promo-copy{max-width:620px}.assistant-promo h2{font-size:clamp(28px,3.2vw,40px);margin-bottom:11px}.assistant-promo p{margin:0;color:#596f6b;max-width:590px;font-size:12px;line-height:1.9}.suggestions{display:flex;gap:8px;flex-wrap:wrap;margin-top:19px}.suggestion-chip{border:1px solid #cbded3;border-radius:999px;padding:8px 11px;background:#ffffffad;color:#2d5e58;font-size:10px;font-weight:750}.suggestion-chip:hover{background:#fff;border-color:#8db9a8}.promo-side{display:flex;flex-direction:column;align-items:center;gap:11px;min-width:175px}.promo-orb{width:91px;height:91px;display:grid;place-items:center;border-radius:50%;background:radial-gradient(circle at 30% 25%,#dff1e6 0,#8fc3ac 32%,#347c77 67%,#183e48 100%);box-shadow:0 12px 28px #347c7733;color:white;font-size:28px;border:7px solid #ffffff9c}.promo-side span{font-size:10px;color:#57726d;text-align:center}.promo-side .btn{width:100%}
+.how-section{padding:80px 0 5px}.steps-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.step-card{position:relative;padding:24px 24px 22px;border-top:1px solid #cfdcd2;background:transparent}.step-num{display:inline-flex;align-items:center;justify-content:center;width:35px;height:35px;border-radius:50%;background:#e5f0e9;color:var(--teal-dark);font-size:11px;font-weight:900}.step-card h3{margin:17px 0 8px;color:var(--navy);font-size:15px}.step-card p{margin:0;color:var(--muted);font-size:12px;line-height:1.8}
+.faq-section{padding:82px 0 15px}.faq-wrap{display:grid;grid-template-columns:.78fr 1.22fr;gap:55px}.faq-intro h2{margin:9px 0 13px;font-family:Georgia,serif;font-size:clamp(31px,3.3vw,43px);font-weight:500;line-height:1.07;letter-spacing:-.04em;color:var(--navy)}.faq-intro p{margin:0;color:var(--muted);font-size:12px;line-height:1.9}.faq-list{border-top:1px solid #e1e5dd}.faq-list details{border-bottom:1px solid #e1e5dd;padding:18px 0}.faq-list summary{display:flex;justify-content:space-between;gap:15px;list-style:none;cursor:pointer;font-size:13px;font-weight:800;color:var(--navy)}.faq-list summary::-webkit-details-marker{display:none}.faq-list summary:after{content:"+";font-size:20px;line-height:1;color:var(--teal);font-weight:500}.faq-list details[open] summary:after{content:"−"}.faq-list details p{margin:12px 24px 0 0;color:var(--muted);font-size:12px;line-height:1.85}
+.workspace-section{padding:80px 0 15px;scroll-margin-top:90px}.workspace-intro{display:flex;justify-content:space-between;align-items:flex-end;gap:25px;margin-bottom:25px}.workspace-intro h2{margin:8px 0 7px;font-family:Georgia,serif;font-size:clamp(29px,3.2vw,42px);line-height:1.08;font-weight:500;letter-spacing:-.045em;color:var(--navy)}.workspace-intro p{margin:0;color:var(--muted);font-size:12px}.workflow-shell{min-width:0;display:none}.workflow-shell.visible{display:block}.panel{display:none}.panel.active{display:block;animation:panelIn .24s ease both}@keyframes panelIn{from{opacity:.4;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}.grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(280px,.9fr);gap:17px}.card{min-width:0;border:1px solid #e2e7e1;border-radius:20px;background:#fff;padding:22px;box-shadow:0 12px 36px #203d3d08}.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:18px}.card-title{font-size:16px;font-weight:850;letter-spacing:-.03em;color:var(--navy)}.muted{color:var(--muted);font-size:11px;line-height:1.7}.pill{font-size:9px;letter-spacing:.09em;color:var(--teal-dark);background:#edf5f1;border:1px solid #d7e8de;padding:5px 9px;border-radius:999px;font-weight:850;white-space:nowrap}.voice-stage{text-align:center;padding:12px 8px 13px}.voice-options{display:flex;justify-content:center;align-items:center;gap:10px;flex-wrap:wrap;margin:0 auto 14px}.voice-options label{font-size:10px;color:var(--muted);font-weight:850;letter-spacing:.08em}.voice-options select{max-width:100%;border:1px solid var(--line);background:#fbfcfa;color:var(--ink);border-radius:10px;padding:9px 12px;min-width:205px}.orb-wrap{height:150px;display:grid;place-items:center}.orb{width:115px;height:115px;border-radius:50%;background:radial-gradient(circle at 35% 25%,#d6f0df,#97cbb5 26%,#448d82 56%,#183c45 82%);box-shadow:0 0 50px #347c7723,inset 0 0 24px #ffffff59;position:relative}.orb:after{content:"";position:absolute;inset:14px;border:1px solid #ffffff71;border-radius:50%}.orb.recording{animation:pulse 1.5s infinite}.orb.speaking{animation:speak .55s infinite alternate}@keyframes pulse{50%{transform:scale(1.055);box-shadow:0 0 66px #347c7750}}@keyframes speak{to{transform:scale(1.07);filter:saturate(1.18)}}.voice-stage h2{font-size:21px;margin:8px 0;color:var(--navy)}.voice-stage p{color:var(--muted);font-size:11px;max-width:420px;margin:0 auto 16px;line-height:1.8}.actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.voice-stage .btn,.booking-actions .btn{padding:10px 13px;font-size:11px}.note{font-size:10px;line-height:1.7;color:#7c8988;margin-top:13px}.conversation{display:flex;flex-direction:column;gap:10px;max-height:350px;min-height:215px;overflow:auto;padding:2px 3px 8px}.empty{color:var(--muted);text-align:center;padding:46px 12px;font-size:11px;line-height:1.8}.msg{padding:11px 13px;border-radius:13px;max-width:94%;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;line-height:1.75}.msg.user{align-self:flex-end;background:#edf5f0;border:1px solid #d6e7dd;color:#214b46}.msg.assistant{align-self:flex-start;background:#f5f6f2;border:1px solid #e4e8e0;color:#344e51}.message-body{display:block}.message-body strong{font-weight:850;color:var(--navy)}.md-table-row{display:flex;flex-wrap:wrap;gap:7px;margin:4px 0;padding:7px 9px;border:1px solid #dde5dc;border-radius:8px;background:#fafbf8}.md-table-row span{overflow-wrap:anywhere}.md-table-row span+span:before{content:"· ";color:var(--muted)}.who{display:block;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#7b8b89;margin-bottom:4px}.quick{display:grid;gap:9px}.quick-item{display:flex;gap:11px;align-items:center;padding:12px;border:1px solid #e4e9e2;background:#fafbf8;border-radius:13px}.quick-icon{width:35px;height:35px;flex-shrink:0;display:grid;place-items:center;border-radius:11px;background:#e9f2ed;font-size:16px;color:var(--teal-dark)}.quick-item strong{display:block;font-size:11px;color:var(--navy)}.quick-item span{display:block;color:var(--muted);font-size:10px;line-height:1.6}.section-label{font-size:9px;letter-spacing:.15em;color:#81908e;font-weight:850;margin:22px 0 10px}.booking-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:20px}.booking-title{font-family:Georgia,serif;font-size:25px;font-weight:500;letter-spacing:-.035em;color:var(--navy)}.booking-copy{color:var(--muted);font-size:12px;line-height:1.7;margin:4px 0 0;max-width:570px}.booking-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field.full{grid-column:1/-1}.field label{font-size:9px;color:#677d7e;font-weight:850;letter-spacing:.095em}.field input,.field select,.field textarea{width:100%;min-width:0;border:1px solid #dfe6df;background:#fbfcfa;color:var(--ink);border-radius:11px;padding:12px;font:inherit;font-size:12px;outline:none;transition:border-color .15s,box-shadow .15s}.field input:focus,.field select:focus,.field textarea:focus{border-color:#7bb7a6;box-shadow:0 0 0 3px #347c7718}.booking-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px}.booking-message{display:none;padding:12px 14px;border-radius:12px;margin-top:14px;font-size:12px;white-space:pre-wrap;line-height:1.75}.booking-message.show{display:block;animation:panelIn .2s ease both}.booking-message.ok{background:#eaf5ef;border:1px solid #c8e3d4;color:#28654f}.booking-message.err{background:#fff0ee;border:1px solid #f0d1ca;color:#8d3e35}.room-results,.booking-results{display:grid;gap:10px;margin-top:14px}.room-item,.booking-item{border:1px solid #e1e7df;background:#fbfcfa;border-radius:13px;padding:14px}.room-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}.room-name{font-weight:850;color:var(--navy);font-size:12px}.room-meta{font-size:11px;color:var(--muted);margin-top:5px;line-height:1.7}.room-price{font-weight:850;color:var(--teal-dark);white-space:nowrap;font-size:12px}.room-item .btn{padding:8px 12px;font-size:10px;margin-top:10px}.booking-lookup{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:10px;align-items:end;margin-top:22px;padding-top:20px;border-top:1px solid #e5e9e2}.small-note{font-size:10px;color:#778786;margin-top:12px;line-height:1.7}.booking-item .booking-actions{margin-top:10px}.booking-item .btn{padding:8px 11px;font-size:10px}.menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.menu-card{appearance:none;text-align:left;display:flex;flex-direction:column;align-items:flex-start;gap:10px;min-height:205px;padding:22px;border:1px solid #dfe6df;border-radius:18px;background:linear-gradient(145deg,#fff,#f4f7f2);color:var(--ink);box-shadow:0 12px 30px #1e3b3908;transition:transform .18s,border-color .18s,box-shadow .18s}.menu-card:hover,.menu-card:focus-visible{transform:translateY(-3px);border-color:#97c2b0;box-shadow:0 17px 34px #347c7715;outline-offset:3px}.menu-card-icon{display:grid;place-items:center;width:43px;height:43px;border-radius:13px;background:#e8f3ec;font-size:21px;color:var(--teal-dark)}.cancel-card .menu-card-icon{background:#f9e9e6;color:#a83c48}.menu-card-title{font-size:19px;font-weight:850;letter-spacing:-.035em;color:var(--navy)}.menu-card-copy{color:var(--muted);font-size:11px;line-height:1.75;max-width:370px}.menu-card-cta{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;margin-top:auto;padding-top:11px;color:var(--teal-dark);font-weight:850;font-size:11px}.cancel-card .menu-card-cta{color:#a83c48}.menu-card-cta b{font-size:17px}.menu-footnote{color:var(--muted);font-size:10px;text-align:center;line-height:1.7;margin:15px 0 0}.chat-compose-label{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:14px 2px 7px;font-size:10px;font-weight:850;color:var(--navy)}.chat-compose-badge{font-size:8px;letter-spacing:.09em;color:var(--teal-dark);border:1px solid #cfe2d7;background:#eef6f0;border-radius:999px;padding:4px 7px;white-space:nowrap}.chat-composer{display:flex;gap:9px;align-items:stretch;margin-top:0;padding:9px;border:1px solid #d8e4dc;border-radius:14px;background:#f8faf6}.chat-composer textarea{display:block;flex:1;min-width:0;width:100%;resize:vertical;min-height:52px;max-height:150px;border:1px solid #dfe6df;background:#fff;color:var(--ink);border-radius:10px;padding:12px;font:inherit;font-size:12px;outline:none}.chat-composer textarea::placeholder{color:#82918e;opacity:1}.chat-composer textarea:focus{border-color:#7bb7a6;box-shadow:0 0 0 3px #347c7715}.chat-composer button{align-self:stretch;min-width:105px;white-space:nowrap}.chat-help{font-size:10px;color:#7d8c89;line-height:1.7;margin:7px 2px 0}.chat-composer button:disabled{opacity:.55}.footer{margin-top:84px;padding:33px 0 0;border-top:1px solid #e0e5dd;color:var(--muted);font-size:11px}.footer-main{display:grid;grid-template-columns:1.25fr .8fr .8fr;gap:35px;padding-bottom:28px}.footer-brand .brand{margin-bottom:13px}.footer-brand p{max-width:310px;margin:0;color:#778784;font-size:11px;line-height:1.8}.footer-col strong{display:block;margin-bottom:12px;color:var(--navy);font-size:11px}.footer-col a,.footer-col button{display:block;margin:8px 0;padding:0;border:0;background:none;color:#6a7c7a;font-size:11px;text-align:left}.footer-col a:hover,.footer-col button:hover{color:var(--teal-dark)}.footer-bottom{display:flex;justify-content:space-between;gap:15px;padding:15px 0;border-top:1px solid #e3e7e0;color:#879390;font-size:9px}.footer-bottom a{text-decoration:underline;text-underline-offset:3px}.assistant-fab{position:fixed;right:24px;bottom:23px;z-index:80;display:flex;align-items:center;gap:11px;padding:12px 17px 12px 12px;border:1px solid #ffffff80;border-radius:999px;background:var(--navy);color:#fff;box-shadow:0 13px 38px #102f3a38;transition:transform .2s,background .2s}.assistant-fab:hover{transform:translateY(-3px);background:#1b4b54}.fab-icon{width:35px;height:35px;display:grid;place-items:center;border-radius:50%;background:#d2e8dd;color:var(--navy);font-size:18px}.fab-copy{display:flex;flex-direction:column;align-items:flex-start;gap:1px}.fab-copy strong{font-size:11px}.fab-copy small{font-size:9px;color:#c7ddd4}.assistant-modal{display:none;position:fixed;inset:0;z-index:100;place-items:center;padding:20px}.assistant-modal.open{display:grid}.assistant-backdrop{position:absolute;inset:0;background:rgba(11,31,36,.62);backdrop-filter:blur(5px);animation:fadeIn .18s ease}.assistant-dialog{position:relative;z-index:1;width:min(1160px,100%);max-height:calc(100dvh - 40px);overflow-y:auto;border:1px solid #ffffffb5;border-radius:24px;background:var(--paper);box-shadow:0 35px 100px #081e2580;padding:25px;animation:dialogIn .25s cubic-bezier(.2,.7,.2,1) both}.assistant-dialog-head{position:sticky;top:-25px;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:20px;margin:-25px -25px 22px;padding:17px 24px;background:#fbfaf7ed;backdrop-filter:blur(12px);border-bottom:1px solid #e2e7df}.assistant-dialog-head strong{display:block;font-size:13px;color:var(--navy)}.assistant-dialog-head span{display:block;margin-top:2px;color:var(--muted);font-size:10px}.assistant-close{width:39px;height:39px;display:grid;place-items:center;border:1px solid #dfe5df;border-radius:12px;background:#fff;color:var(--navy);font-size:21px}.assistant-modal .grid{grid-template-columns:minmax(0,1.02fr) minmax(320px,.98fr)}.assistant-modal .section-label{margin-top:19px}.reveal{opacity:0;transform:translateY(13px);transition:opacity .6s ease,transform .6s ease}.reveal.is-visible{opacity:1;transform:none}@keyframes fadeIn{from{opacity:0}to{opacity:1}}@keyframes dialogIn{from{opacity:0;transform:translateY(12px) scale(.99)}to{opacity:1;transform:translateY(0) scale(1)}}
+/* Keep typed chat as prominent and reliable as voice chat. */
+.chat-composer{display:flex;gap:9px;align-items:stretch}
+@media(max-width:1120px){.nav-links{gap:14px}.nav-links a{font-size:11px}.nav-actions .status{display:none}.hero-content{padding-left:48px}.experience-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.assistant-modal .grid{grid-template-columns:1fr}.assistant-modal .grid>.card{padding:19px}}
+@media(max-width:880px){.shell{padding:0 22px 42px}.top{margin:0 -22px;padding:14px 22px;gap:14px}.nav-toggle{display:flex;order:3}.nav-actions{margin-left:auto}.nav-links{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;padding:9px 22px 16px;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 22px 28px #173b390e}.nav-links.open{display:flex}.nav-links a{padding:12px 4px;border-bottom:1px solid #e8ebe4;font-size:13px}.nav-links .btn{margin-top:10px;width:100%}.top{flex-wrap:wrap}.nav-links{order:4}.hero{min-height:500px}.hero-content{padding:54px 37px 95px}.hero:before{background:linear-gradient(90deg,rgba(12,37,43,.88),rgba(13,42,48,.62) 70%,rgba(13,42,48,.15)),linear-gradient(0deg,rgba(13,36,42,.4),transparent 50%)}.search-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.search-field:nth-child(2){border-right:0}.search-submit{width:100%}.search-card{margin-left:8px;margin-right:8px}.room-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.feature-band{gap:30px}.feature-visual{min-height:385px}.gallery-grid{grid-template-rows:190px 140px}.assistant-promo{padding:32px}.faq-wrap{gap:28px}.grid{grid-template-columns:1fr}.booking-lookup{grid-template-columns:repeat(2,minmax(0,1fr))}.booking-lookup .btn{grid-column:1/-1}.footer-main{grid-template-columns:1fr 1fr}.footer-brand{grid-column:1/-1}}
+@media(max-width:600px){html{scroll-padding-top:82px}.announcement{font-size:9px;padding:7px 10px}.shell{padding:0 14px 33px}.top{margin:0 -14px;padding:12px 14px}.brand{gap:8px}.logo{width:37px;height:37px;border-radius:12px;font-size:23px}.brand-wordmark{font-size:18px}.nav-actions{gap:7px}.nav-actions .btn{padding:11px 13px;font-size:10px}.nav-toggle{width:38px;height:38px}.hero{min-height:510px;margin-top:12px;border-radius:19px;background-position:60% center}.hero-content{padding:44px 24px 86px}.hero h1{font-size:clamp(43px,11.5vw,60px)}.hero p{font-size:13px;line-height:1.75;margin:18px 0 22px}.hero-kicker{font-size:8px;letter-spacing:.1em}.hero-actions{gap:15px}.hero .btn{padding:14px 15px}.hero-link{font-size:10px}.hero-caption{right:12px;bottom:12px;padding:8px 10px;font-size:9px}.hero-caption strong{font-size:10px}.search-card{margin:-30px 4px 0;padding:16px 13px 13px;border-radius:16px}.search-intro{align-items:flex-start;flex-direction:column;gap:5px}.search-title{font-size:14px}.search-grid{grid-template-columns:1fr 1fr;gap:8px}.search-field{min-height:57px;padding:2px 8px}.search-field:nth-child(2){border-right:0}.search-field label{font-size:8px}.search-field input,.search-field select{font-size:12px}.search-submit{grid-column:1/-1}.search-note{font-size:9px}.section{padding-top:62px}.section-head{align-items:flex-start;flex-direction:column;gap:15px;margin-bottom:21px}.section-head h2,.feature-copy h2,.assistant-promo h2{font-size:34px}.section-head p{font-size:12px}.room-grid{grid-template-columns:1fr;gap:13px}.room-image{height:220px}.room-description{min-height:0}.feature-band{grid-template-columns:1fr;gap:25px;padding-top:62px}.feature-visual{min-height:340px}.feature-copy{padding:0}.feature-copy>p{font-size:12px}.experience-strip{padding-top:62px}.experience-grid{grid-template-columns:1fr 1fr;gap:9px}.experience-card{padding:15px 13px}.experience-card h3{font-size:12px}.experience-card p{font-size:10px}.experience-icon{width:36px;height:36px;margin-bottom:13px}.gallery-section{padding-top:62px}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:180px 145px 145px;gap:9px}.gallery-image:first-child{grid-column:1/-1;grid-row:auto}.gallery-caption{left:12px;bottom:11px;font-size:10px}.gallery-caption small{font-size:8px}.assistant-promo{grid-template-columns:1fr;margin-top:60px;padding:24px 20px;gap:22px;border-radius:18px}.assistant-promo h2{font-size:31px}.assistant-promo p{font-size:11px}.suggestions{gap:6px}.suggestion-chip{font-size:9px;padding:7px 9px}.promo-side{flex-direction:row;justify-content:space-between;min-width:0}.promo-orb{width:60px;height:60px;font-size:20px;border-width:4px}.promo-side span{display:none}.promo-side .btn{width:auto}.how-section{padding-top:62px}.steps-grid{grid-template-columns:1fr;gap:5px}.step-card{padding:17px 8px}.step-card h3{margin-top:11px}.faq-section{padding-top:62px}.faq-wrap{grid-template-columns:1fr;gap:22px}.faq-intro h2{font-size:34px}.faq-list details{padding:15px 0}.faq-list summary{font-size:12px}.workspace-section{padding-top:62px}.workspace-intro{align-items:flex-start;flex-direction:column;gap:11px}.workspace-intro h2{font-size:34px}.card{padding:16px;border-radius:16px}.booking-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.booking-head{align-items:flex-start}.booking-title{font-size:23px}.booking-lookup{grid-template-columns:1fr}.booking-lookup .btn{grid-column:auto}.room-top{flex-direction:column;gap:5px}.room-price{white-space:normal}.menu-grid{grid-template-columns:1fr}.menu-card{min-height:170px;padding:18px}.menu-card-title{font-size:17px}.chat-compose-label{align-items:flex-start;flex-direction:column;gap:5px}.chat-composer{flex-direction:column}.chat-composer textarea{min-height:58px}.chat-composer button{width:100%;min-height:45px}.footer{margin-top:60px}.footer-main{grid-template-columns:1fr 1fr;gap:22px}.footer-brand{grid-column:1/-1}.footer-bottom{flex-direction:column;gap:7px}.assistant-fab{right:12px;bottom:12px;left:12px;justify-content:center;padding:8px 14px;gap:9px}.fab-icon{width:31px;height:31px}.fab-copy strong{font-size:10px}.fab-copy small{font-size:8px}.assistant-modal{padding:8px}.assistant-dialog{padding:13px;border-radius:17px;max-height:calc(100dvh - 16px)}.assistant-dialog-head{top:-13px;margin:-13px -13px 14px;padding:12px 14px}.assistant-dialog-head strong{font-size:12px}.assistant-dialog-head span{font-size:9px}.assistant-close{width:35px;height:35px}.assistant-modal .grid>.card{padding:14px}.assistant-modal .orb-wrap{height:125px}.assistant-modal .orb{width:91px;height:91px}.assistant-modal .conversation{min-height:170px;max-height:280px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="announcement"><span class="spark" aria-hidden="true">✦</span><span>A more thoughtful way to plan your next stay</span><span class="spark" aria-hidden="true">✦</span></div>
+<main class="shell">
+<header class="top">
+  <a class="brand" href="#home" aria-label="Nova Stays home"><span class="logo" aria-hidden="true">n</span><span class="brand-wordmark">nova<small>STAYS & HOSPITALITY</small></span></a>
+  <nav class="nav-links" id="siteNav" aria-label="Main navigation">
+    <a href="#rooms">Rooms & Suites</a>
+    <a href="#experience">The Experience</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#faqs">Good to Know</a>
+    <button class="btn secondary" type="button" data-tab="manage" data-open-panel="manage">My Bookings</button>
+  </nav>
+  <div class="nav-actions"><div class="status" aria-live="polite"><span class="dot" id="dot"></span><span id="status">Ready when you are</span></div><button class="btn primary" id="headerBookNow" type="button" data-tab="booking" data-open-panel="booking">Book now <span aria-hidden="true">↗</span></button></div>
+  <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-controls="siteNav" aria-expanded="false"><span aria-hidden="true">☰</span></button>
+</header>
+
+<section class="hero" id="home" aria-labelledby="heroTitle">
+  <div class="hero-content">
+    <div class="hero-kicker"><span class="kicker-dot" aria-hidden="true"></span> A stay that feels like yours</div>
+    <h1 id="heroTitle">Arrive curious.<br><em>Leave renewed.</em></h1>
+    <p>Find the right room for your next getaway. Explore available options, compare live rates, and let Nova help you through the booking steps.</p>
+    <div class="hero-actions"><button class="btn btn-light" type="button" data-open-panel="booking">Find your stay <span aria-hidden="true">↗</span></button><button class="hero-link" type="button" data-open-assistant>Meet your AI concierge <span aria-hidden="true">→</span></button></div>
+  </div>
+  <div class="hero-caption"><strong>A little space to slow down</strong>Make your next stay feel effortless.</div>
+</section>
+
+<section class="search-card" aria-label="Search available hotel rooms">
+  <div class="search-intro"><div><div class="search-title">Where your next stay begins</div><div class="search-subtitle">Choose your dates and guest count to see live room availability.</div></div><div class="search-live">Checks live availability</div></div>
+  <form id="heroSearchForm">
+    <div class="search-grid">
+      <div class="search-field"><label for="heroCheckIn">Check-in</label><input id="heroCheckIn" type="date" required aria-label="Check-in date"></div>
+      <div class="search-field"><label for="heroCheckOut">Check-out</label><input id="heroCheckOut" type="date" required aria-label="Check-out date"></div>
+      <div class="search-field"><label for="heroGuests">Guests</label><select id="heroGuests" aria-label="Number of guests"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option></select></div>
+      <button class="btn primary search-submit" type="submit">Search stays <span aria-hidden="true">→</span></button>
+    </div>
+    <div class="hero-search-notice" id="heroSearchNotice" role="alert"></div>
+  </form>
+  <div class="search-note">Room types, prices and capacity are shown from the existing booking system after your search.</div>
+</section>
+
+<section class="section reveal" id="rooms" aria-labelledby="roomsTitle">
+  <div class="section-head"><div class="section-head-copy"><div class="eyebrow">Find your kind of stay</div><h2 id="roomsTitle">Space to settle in.<br>Room to feel away.</h2><p>Whether you’re travelling solo, planning a family trip, or staying a little longer, start with your dates. Available room details and nightly rates come from the live booking system.</p></div><button class="text-link" type="button" data-open-panel="booking">Explore availability <span aria-hidden="true">→</span></button></div>
+  <div class="room-grid">
+    <article class="room-tile"><div class="room-image"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1000&q=82" alt="Bright, warmly styled hotel bedroom" loading="lazy"><span class="room-tag">A restful retreat</span></div><div class="room-info"><div class="room-title">A comfortable start</div><p class="room-description">A thoughtful base for getting out and discovering somewhere new.</p><div class="room-info-bottom"><span>See live room details</span><button class="text-link" type="button" data-open-panel="booking">Find a room <span aria-hidden="true">→</span></button></div></div></article>
+    <article class="room-tile"><div class="room-image"><img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=82" alt="Contemporary hotel room with a calm neutral palette" loading="lazy"><span class="room-tag">A little more room</span></div><div class="room-info"><div class="room-title">Room to unwind</div><p class="room-description">Compare options and choose the space that fits your plans.</p><div class="room-info-bottom"><span>Rates depend on dates</span><button class="text-link" type="button" data-open-panel="booking">Compare options <span aria-hidden="true">→</span></button></div></div></article>
+    <article class="room-tile"><div class="room-image"><img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&w=1000&q=82" alt="Spacious hotel suite with seating area" loading="lazy"><span class="room-tag">Stay together</span></div><div class="room-info"><div class="room-title">Space for everyone</div><p class="room-description">Enter your group size to see rooms that can accommodate your guests.</p><div class="room-info-bottom"><span>Capacity checked live</span><button class="text-link" type="button" data-open-panel="booking">Plan your stay <span aria-hidden="true">→</span></button></div></div></article>
+  </div>
+  <p class="disclaimer">Photography is illustrative. Actual room types, descriptions, capacity, prices and availability are provided by the booking system.</p>
+</section>
+
+<section class="feature-band reveal" id="experience" aria-labelledby="experienceTitle">
+  <div class="feature-visual"><img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&w=1200&q=82" alt="Quiet hotel lounge with soft light and comfortable seating" loading="lazy"><div class="visual-note"><span>The Nova approach</span><strong>Less time figuring things out. More time looking forward.</strong></div></div>
+  <div class="feature-copy"><div class="eyebrow">A better booking experience</div><h2 id="experienceTitle">Good stays start with clear choices.</h2><p>We keep the important parts close at hand: see which rooms are available for your dates, understand the details before you choose, and get help if you need it.</p>
+    <div class="feature-list">
+      <div class="feature-item"><span class="feature-icon" aria-hidden="true">⌕</span><div><strong>Availability that reflects your dates</strong><p>Search using your stay dates and guest count. Available rooms and prices are returned by the existing booking service.</p></div></div>
+      <div class="feature-item"><span class="feature-icon" aria-hidden="true">✦</span><div><strong>A voice and text concierge</strong><p>Ask Nova to help with a booking, then continue by voice or by typing—no microphone required for text chat.</p></div></div>
+      <div class="feature-item"><span class="feature-icon" aria-hidden="true">✓</span><div><strong>Keep track of your reservation</strong><p>Use My Bookings to look up reservations with the guest name and mobile number used at booking.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="experience-strip reveal" aria-labelledby="whyTitle">
+  <div class="experience-header"><div class="eyebrow">Made to feel straightforward</div><h2 id="whyTitle">A smoother journey, at every step.</h2><p>No clutter, no guessing which button comes next. Just a clear path from finding a room to managing your reservation.</p></div>
+  <div class="experience-grid">
+    <article class="experience-card"><div class="experience-icon" aria-hidden="true">⌕</div><h3>Search with confidence</h3><p>Check room availability for the dates and number of guests you choose.</p></article>
+    <article class="experience-card"><div class="experience-icon" aria-hidden="true">▤</div><h3>Compare your options</h3><p>Review live room descriptions, capacities and nightly rates before selecting.</p></article>
+    <article class="experience-card"><div class="experience-icon" aria-hidden="true">✦</div><h3>Ask Nova for help</h3><p>Use a multilingual voice session or the same conversation through text.</p></article>
+    <article class="experience-card"><div class="experience-icon" aria-hidden="true">↺</div><h3>Manage a booking</h3><p>Look up a reservation and use the existing cancellation flow when needed.</p></article>
+  </div>
+</section>
+
+<section class="gallery-section reveal" id="gallery" aria-labelledby="galleryTitle">
+  <div class="section-head"><div class="section-head-copy"><div class="eyebrow">A feeling for your next stay</div><h2 id="galleryTitle">A little inspiration before you go.</h2><p>Explore the mood and details you might look for when choosing a place to stay. For exact room features, always use the live room description.</p></div><button class="text-link" type="button" data-open-panel="booking">Find available rooms <span aria-hidden="true">→</span></button></div>
+  <div class="gallery-grid">
+    <div class="gallery-image"><img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1100&q=82" alt="Hotel architecture and landscaped outdoor space" loading="lazy"><div class="gallery-caption"><small>01 / Find your place</small>Make a little room for rest</div></div>
+    <div class="gallery-image"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=82" alt="Warm, softly lit contemporary interior" loading="lazy"><div class="gallery-caption"><small>02 / A slower moment</small>Comfort in the details</div></div>
+    <div class="gallery-image"><img src="https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&w=800&q=82" alt="Neatly arranged hotel bed and bedroom details" loading="lazy"><div class="gallery-caption"><small>03 / Get comfortable</small>Your time, your pace</div></div>
+    <div class="gallery-image"><img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=82" alt="Relaxed lounge seating and natural textures" loading="lazy"><div class="gallery-caption"><small>04 / Settle in</small>Space to exhale</div></div>
+    <div class="gallery-image"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=82" alt="Bright modern interior with large windows" loading="lazy"><div class="gallery-caption"><small>05 / Look ahead</small>Something new is waiting</div></div>
+  </div>
+  <p class="disclaimer">Gallery photos are illustrative stock photography and are not a guarantee of the actual property or room allocated.</p>
+</section>
+
+<section class="assistant-promo reveal" id="ai-assistant" aria-labelledby="aiTitle">
+  <div class="promo-copy"><div class="eyebrow">Your AI booking companion</div><h2 id="aiTitle">Let Nova help you find your next stay.</h2><p>Ask for help with room availability, prices returned by the system, guest details, or the steps to complete a reservation. Start with your own words, in voice or text.</p><div class="suggestions"><button class="suggestion-chip" type="button" data-open-assistant data-mode="booking" data-prompt="Find a room for my dates.">“Find a room for my dates.”</button><button class="suggestion-chip" type="button" data-open-assistant data-mode="booking" data-prompt="Help me complete my booking.">“Help me complete my booking.”</button><button class="suggestion-chip" type="button" data-open-assistant data-mode="manage" data-prompt="Help me find or cancel a booking.">“Help me manage a booking.”</button></div></div>
+  <div class="promo-side"><div class="promo-orb" aria-hidden="true">✳</div><span>Voice when you want it.<br>Text when you need it.</span><button class="btn btn-dark" type="button" data-open-assistant>Talk to Nova <span aria-hidden="true">↗</span></button></div>
+</section>
+
+<section class="how-section reveal" aria-labelledby="howTitle">
+  <div class="section-head"><div class="section-head-copy"><div class="eyebrow">From search to stay</div><h2 id="howTitle">Three clear steps.</h2><p>Your booking stays connected to the existing availability and reservation service.</p></div></div>
+  <div class="steps-grid"><article class="step-card"><span class="step-num">01</span><h3>Tell us when you’re travelling</h3><p>Choose check-in, check-out and guest count to search for available rooms.</p></article><article class="step-card"><span class="step-num">02</span><h3>Choose a room and share details</h3><p>Compare the live results, select a room, then enter the guest name and mobile number.</p></article><article class="step-card"><span class="step-num">03</span><h3>Keep your booking details close</h3><p>Review the response from the booking service and save your booking code for future lookup.</p></article></div>
+</section>
+
+<section class="faq-section reveal" id="faqs" aria-labelledby="faqTitle">
+  <div class="faq-wrap"><div class="faq-intro"><div class="eyebrow">Good to know</div><h2 id="faqTitle">A few helpful answers.</h2><p>Need something else? Open Nova for help with the supported booking and cancellation workflows.</p><button class="btn secondary" type="button" data-open-assistant style="margin-top:18px">Ask Nova a question <span aria-hidden="true">↗</span></button></div>
+    <div class="faq-list">
+      <details><summary>How can I see room prices and amenities?</summary><p>Choose your dates and guest count, then search availability. Room descriptions, capacity and nightly rates are returned by the existing booking system. Confirm any property-specific service not listed there directly with the hotel.</p></details>
+      <details><summary>Can I use Nova without a microphone?</summary><p>Yes. Open the AI assistant and type into the conversation box. Typed messages use the same Nova chat workflow and do not require microphone or speaker access.</p></details>
+      <details><summary>What languages can I use with Nova?</summary><p>The assistant interface supports English, Hindi, Hinglish, Tamil and Telugu options. Auto-detect is also available; voice playback depends on the voices available to your browser and network connection.</p></details>
+      <details><summary>How do I look up or cancel a booking?</summary><p>Open My Bookings and enter the guest name and mobile number used for the reservation. Matching bookings are shown by the existing booking service, and confirmed reservations can be cancelled through its current flow.</p></details>
+      <details><summary>When is a booking confirmed?</summary><p>Follow the confirmation returned by the booking service and save the booking code. Nova's chat responses and this page do not replace a successful server-side booking response.</p></details>
+    </div>
+  </div>
+</section>
+
+<div class="assistant-modal" id="assistantModal" role="presentation" aria-hidden="true">
+  <div class="assistant-backdrop" aria-hidden="true"></div>
+  <section class="assistant-dialog" role="dialog" aria-modal="true" aria-labelledby="assistantDialogTitle">
+    <div class="assistant-dialog-head"><div><strong id="assistantDialogTitle">Meet Nova, your booking assistant</strong><span>Ask about booking steps, or type if voice isn't convenient.</span></div><button class="assistant-close" type="button" data-close-assistant aria-label="Close AI assistant">×</button></div>
+    <section class="panel active" id="panel-voice"><div class="grid"><div class="card"><div class="card-head"><div><div class="card-title">Talk to Nova</div><div class="muted">Use voice or type messages in English, Hinglish, Hindi, Tamil and Telugu.</div></div><span class="pill">GROQ AI</span></div><div class="voice-stage"><div class="orb-wrap"><div class="orb" id="orb"></div></div><h2 id="headline">Ready to talk.</h2><p id="sub">Start a session once. Speak naturally; pause briefly and Nova replies. Use Interrupt &amp; speak to cut in while Nova is talking. End the session whenever you want.</p><div class="voice-options"><label for="language">RESPONSE LANGUAGE</label><select id="language"><option value="auto">Auto-detect my language</option><option value="hinglish">Hinglish (Roman script)</option><option value="hi">Hindi (हिन्दी)</option><option value="en">English</option><option value="ta">Tamil (தமிழ்)</option><option value="te">Telugu (తెలుగు)</option></select></div><div class="actions"><button class="btn primary" id="start">Start session</button><button class="btn secondary" id="stop" disabled>Send now</button><button class="btn secondary danger" id="interrupt" disabled>Interrupt &amp; speak</button><button class="btn secondary danger" id="endSession" disabled>End session</button></div><div class="note">Voice input requires microphone access. If the microphone or playback is unavailable, use the text box in Conversation. Internet access is required for voice playback.</div></div></div><div class="card"><div class="card-head"><div><div class="card-title">Conversation</div><div class="muted">Your recent questions and Nova's replies</div></div><span class="pill" id="mode">READY</span></div><div class="conversation" id="messages" aria-live="polite" aria-relevant="additions text"><div class="empty" id="empty">Your conversation will appear here after your first message.</div></div><div class="chat-compose-label"><label for="chatInput">Mic not working? Type your message here</label><span class="chat-compose-badge">VOICE OPTIONAL</span></div><form id="chatForm" class="chat-composer" autocomplete="off" aria-label="Send a typed message to Nova"><textarea id="chatInput" rows="2" maxlength="4000" spellcheck="true" placeholder="Type your booking or cancellation request…" aria-label="Type a message to Nova"></textarea><button class="btn primary" id="chatSend" type="submit">Send message</button></form><p class="chat-help">Text messages go to the same Nova conversation. No microphone or speaker is required for text. Nova supports the existing hotel booking and cancellation workflows.</p><div class="actions" style="justify-content:flex-start;margin-top:12px"><button class="btn secondary" id="clearChat" type="button">Clear conversation</button></div></div></div><div class="section-label">QUICK WAYS TO BEGIN</div><div class="quick"><div class="quick-item"><div class="quick-icon">⌕</div><div><strong>Find an available room</strong><span>Start with your dates and number of guests, then compare live results.</span></div></div><div class="quick-item"><div class="quick-icon">▤</div><div><strong>Manage a reservation</strong><span>Look up a booking with the guest name and mobile number used at booking.</span></div></div><div class="quick-item"><div class="quick-icon">🔐</div><div><strong>Existing reservation service</strong><span>Booking requests continue through the current server and database integration.</span></div></div></div></section>
+    <section class="panel active" id="panel-menu"><div class="section-label">CHOOSE A WORKFLOW</div><div class="menu-grid"><button class="menu-card" type="button" data-open-panel="booking"><span class="menu-card-icon">⌂</span><span class="menu-card-title">Hotel Booking</span><span class="menu-card-copy">Find available rooms, compare live rates, and continue with the reservation form.</span><span class="menu-card-cta">Start booking <b>→</b></span></button><button class="menu-card cancel-card" type="button" data-open-panel="manage"><span class="menu-card-icon">↺</span><span class="menu-card-title">My Bookings</span><span class="menu-card-copy">Find a reservation by guest name and mobile number, then manage a confirmed booking.</span><span class="menu-card-cta">Manage reservation <b>→</b></span></button></div><p class="menu-footnote">Nova can help with the booking and cancellation workflows supported by this application.</p></section>
+  </section>
+</div>
+
+<section class="workspace-section" id="bookingWorkspace" aria-labelledby="workspaceTitle">
+  <div class="workspace-intro"><div><div class="eyebrow">Your stay, organised</div><h2 id="workspaceTitle">Ready when you are.</h2><p>Book a room or manage an existing reservation using the current booking service.</p></div><button class="btn secondary" type="button" data-open-assistant>Ask Nova for help <span aria-hidden="true">↗</span></button></div>
+
+  <div class="workflow-shell">
+    <section class="panel" id="panel-booking"><div class="card" id="hotelBooking"><div class="booking-head"><div><div class="eyebrow">ROOM RESERVATION</div><div class="booking-title">Find your perfect room</div><p class="booking-copy">Choose your dates and guests to check live availability. You can also ask Nova to help you through these steps.</p></div><span class="pill">LIVE AVAILABILITY</span></div><form id="bookingForm"><div class="booking-grid"><div class="field"><label for="checkIn">CHECK-IN</label><input id="checkIn" type="date" required></div><div class="field"><label for="checkOut">CHECK-OUT</label><input id="checkOut" type="date" required></div><div class="field"><label for="guestCount">GUESTS</label><select id="guestCount"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option></select></div><div class="field"><label for="roomChoice">AVAILABLE ROOM</label><select id="roomChoice" required><option value="">Search available rooms first</option></select></div><div class="field"><label for="guestName">FULL NAME</label><input id="guestName" autocomplete="name" minlength="2" maxlength="120" required placeholder="Your full name"></div><div class="field"><label for="guestPhone">PHONE</label><input id="guestPhone" type="tel" autocomplete="tel" minlength="10" maxlength="30" required placeholder="Mobile number"></div><div class="field full"><label for="guestRequests">SPECIAL REQUESTS (OPTIONAL)</label><input id="guestRequests" maxlength="1000" placeholder="Late check-in, extra pillow…"></div></div><div class="booking-actions"><button class="btn secondary" type="button" id="searchRooms">Check availability</button><button class="btn primary" type="submit" id="bookRoom" disabled>Confirm booking</button></div></form><div id="bookingMessage" class="booking-message" role="status" aria-live="polite"></div><div id="roomResults" class="room-results"></div><p class="small-note">Room availability is checked by the server. Save the booking code returned after a successful reservation.</p></div></section>
+
+    <section class="panel" id="panel-manage"><div class="card"><div class="booking-head"><div><div class="eyebrow">RESERVATION MANAGEMENT</div><div class="booking-title">My Bookings</div><p class="booking-copy">Look up reservations using the guest name and mobile number used at booking. From here, you can review matching bookings and cancel a confirmed reservation.</p></div><span class="pill">BOOKING LOOKUP</span></div><div class="booking-lookup" style="margin-top:0;padding-top:0;border-top:0"><div class="field"><label for="lookupName">GUEST FULL NAME</label><input id="lookupName" autocomplete="name" minlength="2" placeholder="Name used for booking" required></div><div class="field"><label for="lookupPhone">MOBILE NUMBER</label><input id="lookupPhone" type="tel" minlength="10" maxlength="20" placeholder="Mobile number used for booking" required></div><button class="btn primary" id="lookupBookings" type="button">Find bookings</button></div><div id="bookingResults" class="booking-results"></div><div id="manageMessage" class="booking-message" role="status" aria-live="polite"></div><p class="small-note">Use both details together to protect reservation privacy.</p></div></section>
+  </div>
+</section>
+
+<footer class="footer" id="footer">
+  <div class="footer-main"><div class="footer-brand"><a class="brand" href="#home"><span class="logo" aria-hidden="true">n</span><span class="brand-wordmark">nova<small>STAYS & HOSPITALITY</small></span></a><p>A thoughtful, easy-to-follow way to explore room availability, complete a reservation, and keep booking details close.</p></div><div class="footer-col"><strong>Explore</strong><a href="#rooms">Rooms & Suites</a><a href="#experience">The Experience</a><a href="#gallery">Gallery</a><a href="#faqs">Good to Know</a></div><div class="footer-col"><strong>Helpful links</strong><button type="button" data-open-panel="booking">Book a room</button><button type="button" data-open-panel="manage">My Bookings</button><button type="button" data-open-assistant>Ask Nova AI</button></div></div>
+  <div class="footer-bottom"><span>© <span id="footerYear">2026</span> Nova Stays. Thoughtfully designed for your next stay.</span><span>Live bookings and room details are supplied by the existing reservation service.</span></div>
+</footer>
+</main>
+
+<button class="assistant-fab" type="button" data-open-assistant aria-haspopup="dialog" aria-controls="assistantModal"><span class="fab-icon" aria-hidden="true">✳</span><span class="fab-copy"><strong>Need help booking?</strong><small>Ask our AI assistant</small></span></button>
+
+
+
+<script>
+const $ = id => document.getElementById(id);
+console.info('[NOVA_UI_VERSION] context-aware-room-followup-20261026');
+// Menu-first navigation: the only user-facing actions are booking and cancellation.
+let activeMode = "booking";
+function showPanel(name) {
+  const nextMode = name === "manage" ? "cancel" : "booking";
+  if (nextMode !== activeMode) {
+    // Never let a confirmation or slot question from Booking authorize a Cancel action (or vice versa).
+    if (sessionActive) endSession();
+    activeMode = nextMode;
+    // Switching booking/cancellation mode starts a fresh in-memory conversation.
+    sessionHistory = [];
+    renderConversation();
+  }
+  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id === 'panel-' + name || ((name === 'booking' || name === 'manage') && p.id === 'panel-voice')));
+  const workflowShell = document.querySelector('.workflow-shell');
+  if (workflowShell) workflowShell.classList.toggle('visible', name === 'booking' || name === 'manage');
+  document.querySelectorAll('[data-tab]').forEach(b => b.classList.toggle('active', b.dataset.tab === name));
+  if (name === 'manage') $('lookupName')?.focus({ preventScroll: true });
+}
+document.querySelectorAll('[data-tab]').forEach(button => button.addEventListener('click', () => showPanel(button.dataset.tab)));
+document.querySelectorAll('[data-open-panel]').forEach(button => button.addEventListener('click', () => {
+  const name = button.dataset.openPanel;
+  showPanel(name);
+  if (!button.closest('#assistantModal')) {
+    const target = $('bookingWorkspace');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    closeSiteNav();
+  }
+}));
+
+let recorder = null, stream = null, chunks = [], recording = false, startingRecording = false, busy = false, sessionActive = false, discardCurrent = false;
+let audioContext = null, analyser = null, vadFrame = 0, hardStopTimer = 0, speechDetected = false, lastLoudAt = 0, speechStartAt = 0, voicedFrames = 0, sessionHistory = [];
+let ttsRunId = 0, activeTtsAudio = null, activeTtsStop = null, activeTtsAbortController = null, interruptRequested = false;
+// Clear chat histories left by older versions; current chat history is memory-only.
+try {
+  ["nova_hotel_chat_history_v1", "nova_hotel_chat_history_v2",
+   "nova_hotel_chat_history_v4_booking", "nova_hotel_chat_history_v4_cancel"]
+    .forEach(key => localStorage.removeItem(key));
+} catch (error) {
+  console.warn("Could not clear legacy chat history", error);
+}
+const MIN_SPEECH_MS = 450;
+const SILENCE_END_MS = 850;
+const SPEECH_RMS_THRESHOLD = 0.035;
+
+function setStatus(text, live = false) { $('status').textContent = text; $('dot').classList.toggle('live', live); }
+function escapeMessageHtml(value) {
+  return String(value).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+function formatAssistantMessage(value) {
+  // Render a safe, small Markdown subset: bold text and simple table rows.
+  let safe = escapeMessageHtml(value).replace(/\\([*_`|])/g, '$1');
+  const lines = safe.split(/\r?\n/);
+  return lines.map(line => {
+    const trimmed = line.trim();
+    if (/^\|?\s*:?-{3,}:?\s*(\|\s*:?-{3,}:?\s*)+\|?$/.test(trimmed)) return '';
+    if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+      const cells = trimmed.slice(1, -1).split('|').map(cell => cell.trim()).filter(Boolean);
+      return cells.length ? '<div class="md-table-row">' + cells.map(cell => '<span>' + cell.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') + '</span>').join('') + '</div>' : '';
+    }
+    return line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/(^|\s)\*([^*]+)\*(?=\s|$)/g, '$1<em>$2</em>');
+  }).join('<br>');
+}
+function addMessage(role, text) {
+  if (!text || !text.trim()) return;
+  const empty = $('empty'); if (empty) empty.remove();
+  const div = document.createElement('div'); div.className = 'msg ' + role;
+  const who = document.createElement('span'); who.className = 'who'; who.textContent = role === 'user' ? 'You' : 'Nova';
+  const body = document.createElement('span'); body.className = 'message-body';
+  if (role === 'assistant') body.innerHTML = formatAssistantMessage(text); else body.textContent = text;
+  div.append(who, body);
+  $('messages').append(div); $('messages').scrollTop = $('messages').scrollHeight;
+}
+function setVoiceState(state) {
+  $('orb').className = 'orb ' + state;
+  $('headline').textContent = state === 'recording' ? 'I’m listening…' : state === 'speaking' ? 'Nova is speaking…' : state === 'thinking' ? 'Nova is thinking…' : sessionActive ? 'Session active' : 'Ready to talk.';
+}
+function selectedLanguage() { return $('language').value || 'auto'; }
+
+function renderConversation() {
+  $('messages').replaceChildren();
+  if (!sessionHistory.length) {
+    const empty = document.createElement('div'); empty.id = 'empty'; empty.className = 'empty';
+    empty.textContent = 'Your conversation will appear here after your first message.'; $('messages').append(empty); return;
+  }
+  for (const item of sessionHistory) addMessage(item.role, item.content);
+}
+renderConversation();
+function transcriptionLanguage() { const l = selectedLanguage(); return ['hi', 'en', 'ta', 'te'].includes(l) ? l : 'auto'; }
+function stopVad() {
+  if (vadFrame) cancelAnimationFrame(vadFrame);
+  vadFrame = 0;
+  const ctx = audioContext; audioContext = null; analyser = null;
+  if (ctx && ctx.state !== 'closed') ctx.close().catch(() => {});
+}
+function monitorSilence() {
+  if (!recording || !analyser) return;
+  const samples = new Uint8Array(analyser.fftSize);
+  analyser.getByteTimeDomainData(samples);
+  let sum = 0;
+  for (let i = 0; i < samples.length; i++) { const n = (samples[i] - 128) / 128; sum += n * n; }
+  const rms = Math.sqrt(sum / samples.length);
+  const now = performance.now();
+  if (rms >= SPEECH_RMS_THRESHOLD) {
+    voicedFrames++;
+    if (!speechDetected && voicedFrames >= 3) {
+      speechDetected = true;
+      speechStartAt = now - 120;
+      lastLoudAt = now;
+      $('sub').textContent = 'I heard you. Finish your sentence; I will respond after your pause.';
+    } else if (speechDetected) lastLoudAt = now;
+  } else if (!speechDetected) {
+    // Do not treat room noise or mic activation as a user message.
+    voicedFrames = 0;
+  }
+  if (speechDetected && now - lastLoudAt >= SILENCE_END_MS) {
+    if (now - speechStartAt >= MIN_SPEECH_MS) finishRecording('vad');
+    else { discardCurrent = true; finishRecording('too-short'); }
+    return;
+  }
+  if (recording) vadFrame = requestAnimationFrame(monitorSilence);
+}
+
+async function startSession() {
+  if (sessionActive) return;
+  if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) {
+    addMessage('assistant', 'Microphone recording is not supported in this browser. Please use an updated Chrome or Edge browser.'); return;
+  }
+  sessionActive = true; discardCurrent = false; interruptRequested = false;
+  $('start').disabled = true; $('stop').disabled = true; $('interrupt').disabled = true; $('endSession').disabled = false;
+  $('mode').textContent = 'SESSION ON'; setStatus('Starting voice session…', true);
+  try { await startRecording(); }
+  catch (e) {
+    sessionActive = false; $('start').disabled = false; $('endSession').disabled = true;
+    addMessage('assistant', 'Could not start microphone: ' + (e.message || e));
+  }
+}
+
+async function startRecording() {
+  if (recording || startingRecording || busy || !sessionActive) return;
+  if (!navigator.mediaDevices?.getUserMedia || !window.MediaRecorder) return;
+  startingRecording = true;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+    // End Session may be clicked while the browser permission prompt is open.
+    if (!sessionActive) { stream.getTracks().forEach(t => t.stop()); stream = null; return; }
+    chunks = []; speechDetected = false; lastLoudAt = 0; speechStartAt = 0; voicedFrames = 0; discardCurrent = false;
+    const mime = ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4'].find(t => MediaRecorder.isTypeSupported(t));
+    recorder = new MediaRecorder(stream, mime ? { mimeType: mime } : undefined);
+    recorder.ondataavailable = e => { if (e.data && e.data.size) chunks.push(e.data); };
+    recorder.onerror = e => { addMessage('assistant', 'Recorder error: ' + (e.error?.message || 'Could not record audio.')); };
+    recorder.onstop = () => { void sendRecording(); };
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) throw new Error('Web Audio is not supported by this browser.');
+    audioContext = new Ctx();
+    if (audioContext.state === 'suspended') await audioContext.resume();
+    if (!sessionActive) { stream.getTracks().forEach(t => t.stop()); stream = null; stopVad(); return; }
+    const source = audioContext.createMediaStreamSource(stream);
+    analyser = audioContext.createAnalyser(); analyser.fftSize = 2048; source.connect(analyser);
+    recorder.start(250); recording = true;
+    hardStopTimer = setTimeout(() => {
+      if (!recording) return;
+      if (speechDetected && performance.now() - speechStartAt >= MIN_SPEECH_MS) finishRecording('max-duration');
+      else { discardCurrent = true; finishRecording('too-short'); }
+    }, 30000);
+    $('start').disabled = true; $('stop').disabled = false; $('endSession').disabled = false;
+    $('mode').textContent = 'LISTENING'; $('sub').textContent = 'Listening… speak naturally. Tap Interrupt & speak any time to cut in.';
+    setStatus('Listening for your voice', true); setVoiceState('recording');
+    vadFrame = requestAnimationFrame(monitorSilence);
+  } catch (e) {
+    recording = false; stopVad(); stream?.getTracks().forEach(t => t.stop()); stream = null;
+    setStatus('Microphone unavailable'); $('sub').textContent = 'Allow microphone access in the browser and press Start session again.';
+    sessionActive = false; $('start').disabled = false; $('endSession').disabled = true;
+    throw e;
+  } finally {
+    startingRecording = false;
+  }
+}
+
+function finishRecording(source = 'manual') {
+  if (!recorder || !recording) return;
+  // Ignore automatic VAD stops that were caused by a tiny sound or background noise.
+  if (source === 'vad' && (!speechDetected || performance.now() - speechStartAt < MIN_SPEECH_MS)) return;
+  if (source === 'too-short') discardCurrent = true;
+  recording = false; stopVad();
+  if (hardStopTimer) clearTimeout(hardStopTimer); hardStopTimer = 0;
+  try { recorder.stop(); } catch (e) { console.warn('Recorder already stopped', e); }
+  $('stop').disabled = true;
+  if (!discardCurrent) { $('sub').textContent = 'Processing your message…'; setStatus('Processing your message…', true); }
+}
+
+function targetSpeechLocale(lang, text) {
+  if (lang === 'hi' || /[ऀ-ॿ]/.test(text)) return 'hi-IN';
+  if (lang === 'ta' || /[஀-௿]/.test(text)) return 'ta-IN';
+  if (lang === 'te' || /[ఀ-౿]/.test(text)) return 'te-IN';
+  if (lang === 'hinglish') return 'en-IN';
+  if (lang === 'en') return 'en-IN';
+  return 'en-IN';
+}
+async function browserSpeechFallback(text, lang, runId) {
+  if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) return false;
+  const synth = window.speechSynthesis;
+  let voices = synth.getVoices();
+  if (!voices.length) {
+    await new Promise(resolve => {
+      let finished = false;
+      const done = () => { if (finished) return; finished = true; clearTimeout(timer); synth.removeEventListener?.('voiceschanged', done); resolve(); };
+      const timer = setTimeout(done, 900);
+      synth.addEventListener?.('voiceschanged', done, { once: true });
+    });
+    voices = synth.getVoices();
+  }
+  if (!sessionActive || runId !== ttsRunId) return false;
+  const locale = targetSpeechLocale(lang, text), prefix = locale.split('-')[0].toLowerCase();
+  const voice = voices.find(v => v.lang.toLowerCase() === locale.toLowerCase()) || voices.find(v => v.lang.toLowerCase().startsWith(prefix + '-'));
+  return await new Promise(resolve => {
+    let settled = false;
+    const done = value => { if (settled) return; settled = true; clearTimeout(watchdog); resolve(value); };
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = locale; utterance.rate = 0.92; if (voice) utterance.voice = voice;
+    utterance.onstart = () => { setVoiceState('speaking'); setStatus('Nova is speaking — interrupt any time', true); $('mode').textContent = 'SPEAKING'; $('interrupt').disabled = false; };
+    utterance.onend = () => done(true);
+    utterance.onerror = () => done(false);
+    const watchdog = setTimeout(() => { synth.cancel(); done(false); }, Math.min(30000, Math.max(7000, text.length * 90)));
+    try { synth.cancel(); synth.speak(utterance); } catch { done(false); }
+  });
+}
+async function speakReply(text, lang) {
+  if (!text || !text.trim()) return;
+  const runId = ++ttsRunId;
+  const ttsStartedAt = performance.now();
+  // Prefer the more natural neural voice. Abort the request immediately if the user interrupts.
+  try {
+    activeTtsAbortController = new AbortController();
+    $('interrupt').disabled = false;
+    $('mode').textContent = 'PREPARING VOICE';
+    setStatus('Preparing natural voice — interrupt any time', true);
+    const form = new FormData();
+    form.append('text', text);
+    form.append('language', lang || 'auto');
+    const response = await fetch('/api/tts', { method: 'POST', body: form, signal: activeTtsAbortController.signal });
+    if (!response.ok) throw new Error((await response.text()).slice(0, 300));
+    const audioBlob = await response.blob();
+    const ttsReadyMs = Math.round(performance.now() - ttsStartedAt);
+    console.info('[NOVA_LATENCY]', JSON.stringify({ stage: 'tts_ready', client_ms: ttsReadyMs, server_ms: Number(response.headers.get('X-Nova-TTS-Latency-Ms')) || null, audio_bytes: audioBlob.size }));
+    if (!audioBlob.size) throw new Error('TTS returned an empty audio file.');
+    if (!sessionActive || runId !== ttsRunId) return;
+    const objectUrl = URL.createObjectURL(audioBlob);
+    const audio = new Audio(objectUrl); activeTtsAudio = audio;
+    setVoiceState('speaking'); setStatus('Nova is speaking — interrupt any time', true); $('mode').textContent = 'SPEAKING'; $('interrupt').disabled = false;
+    await new Promise((resolve, reject) => {
+      let settled = false, playbackOutcome = 'ended';
+      const playbackStartedAt = performance.now();
+      const finish = err => {
+        if (settled) return;
+        settled = true; clearTimeout(watchdog); URL.revokeObjectURL(objectUrl);
+        if (activeTtsAudio === audio) activeTtsAudio = null;
+        if (activeTtsStop === stopAudio) activeTtsStop = null;
+        console.info('[NOVA_LATENCY]', JSON.stringify({ stage: 'audio_playback', playback_ms: Math.round(performance.now() - playbackStartedAt), outcome: playbackOutcome }));
+        err ? reject(err) : resolve();
+      };
+      const stopAudio = () => { playbackOutcome = 'interrupted'; audio.pause(); finish(); };
+      activeTtsStop = stopAudio;
+      audio.onended = () => finish();
+      audio.onerror = () => { playbackOutcome = 'error'; finish(new Error('Browser could not play the generated speech audio.')); };
+      const watchdog = setTimeout(() => { playbackOutcome = 'timeout'; audio.pause(); finish(new Error('Speech playback timed out.')); }, Math.min(30000, Math.max(8000, text.length * 100)));
+      audio.play().catch(error => { playbackOutcome = 'error'; finish(error); });
+    });
+  } catch (error) {
+    console.warn('[NOVA_LATENCY]', JSON.stringify({ stage: 'tts_request', client_ms: Math.round(performance.now() - ttsStartedAt), outcome: error.name === 'AbortError' ? 'aborted' : 'error' }));
+    if (runId !== ttsRunId || !sessionActive || error.name === 'AbortError') return;
+    console.warn('Neural TTS failed; using browser voice:', error);
+    const localSpoken = await browserSpeechFallback(text, lang, runId);
+    if (!localSpoken && sessionActive && runId === ttsRunId) {
+      addMessage('assistant', 'Voice playback is unavailable right now. The reply is still visible as text.');
+    }
+  } finally {
+    activeTtsAbortController = null;
+    $('interrupt').disabled = true;
+  }
+}
+
+async function sendRecording() {
+  recording = false; stopVad(); stream?.getTracks().forEach(t => t.stop()); stream = null; $('stop').disabled = true;
+  if (discardCurrent) { discardCurrent = false; chunks = []; if (sessionActive) setTimeout(() => { if (sessionActive && !busy && !recording) startRecording(); }, 350); return; }
+  const blob = new Blob(chunks, { type: recorder?.mimeType || 'audio/webm' });
+  chunks = [];
+  // Avoid sending empty/near-empty recordings to Groq (these often transcribe as punctuation).
+  if (blob.size < 2500) {
+    busy = false;
+    if (sessionActive) { $('sub').textContent = 'I did not catch enough speech. Please speak a little louder.'; setStatus('Still listening', true); setTimeout(() => { if (sessionActive && !busy && !recording) startRecording(); }, 350); }
+    return;
+  }
+  busy = true; setStatus('Transcribing with Groq…', true); $('mode').textContent = 'THINKING'; $('sub').textContent = 'Groq is understanding your speech and preparing a reply…'; setVoiceState('thinking');
+  let voiceRequestStartedAt = 0, turnId = '';
+  try {
+    const form = new FormData(); form.append('audio', blob, 'nova-recording.webm');
+    form.append('language', transcriptionLanguage());
+    // Send in-memory conversation context with each turn; it is not persisted across refreshes.
+    form.append('history', JSON.stringify(sessionHistory.slice(-40)));
+    form.append('mode', activeMode);
+    turnId = (window.crypto && typeof window.crypto.randomUUID === 'function' ? window.crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`);
+    form.append('client_turn_id', turnId);
+    voiceRequestStartedAt = performance.now();
+    const response = await fetch('/api/voice', { method: 'POST', body: form });
+    const data = await response.json().catch(() => ({}));
+    console.info('[NOVA_LATENCY]', JSON.stringify({ stage: 'voice_round_trip', turn_id: turnId, client_ms: Math.round(performance.now() - voiceRequestStartedAt), server_ms: data.latency_ms?.total_ms ?? null, transcription_ms: data.latency_ms?.transcription_ms ?? null, chat_ms_total: data.latency_ms?.chat_ms_total ?? null, chat_calls: data.latency_ms?.chat_calls ?? null, tool_ms_total: data.latency_ms?.tool_ms_total ?? null, tool_calls: data.latency_ms?.tool_calls ?? null, outcome: response.ok ? 'ok' : 'http_error' }));
+    if (!response.ok) throw new Error(data.detail || data.message || `Request failed (${response.status})`);
+    const transcript = (data.transcript || '').trim(); let reply = (data.reply || '').trim(); let spokenReply = (data.spoken_reply || reply).trim();
+    // Voice is connected to the real booking form: recognized dates, guests, name and phone are filled locally.
+    // Actual room availability and booking confirmation still come from the hotel API, never from the LLM.
+    await applySpokenBookingDetails(transcript); // UI helper only; the server-side tool call owns booking actions.
+    // Do not append empty/noise-only turns to the visible chat or the LLM history.
+    if (!transcript || /^[.?!,\s…。？！、]+$/.test(transcript)) {
+      $('sub').textContent = 'I could not hear clear words. Please try again.';
+      setStatus('No clear speech detected');
+    } else if (!reply) {
+      throw new Error('Nova returned an empty reply. Please try again.');
+    } else {
+      addMessage('user', transcript); addMessage('assistant', reply);
+      if (!data.out_of_scope) { sessionHistory.push({ role: 'user', content: transcript }, { role: 'assistant', content: reply });
+        sessionHistory = sessionHistory.slice(-40); }
+      $('sub').textContent = sessionActive ? 'Reply ready. Listen to Nova; then speak your next message.' : 'Session ended. Start a new session whenever you are ready.';
+      setStatus('Reply ready', true);
+      if (sessionActive) await speakReply(spokenReply, selectedLanguage());
+    }
+  } catch (e) {
+    if (voiceRequestStartedAt) console.warn('[NOVA_LATENCY]', JSON.stringify({ stage: 'voice_round_trip', turn_id: turnId || null, client_ms: Math.round(performance.now() - voiceRequestStartedAt), outcome: 'error' }));
+    addMessage('assistant', 'Error: ' + e.message); $('sub').textContent = 'Check the newest log file if this keeps happening.'; setStatus('Request failed');
+  } finally {
+    busy = false; chunks = [];
+    if (sessionActive) {
+      $('mode').textContent = 'LISTENING'; $('interrupt').disabled = true; setVoiceState('recording');
+      setTimeout(() => { if (sessionActive && !busy && !recording) startRecording(); }, interruptRequested ? 80 : 250);
+    } else {
+      $('start').disabled = false; $('endSession').disabled = true; $('mode').textContent = 'SESSION ENDED'; setVoiceState(''); setStatus('Session ended');
+    }
+  }
+}
+
+
+async function sendTextMessage(event) {
+  event?.preventDefault();
+  const text = $('chatInput').value.trim();
+  if (!text) return;
+  if (busy) { setStatus('Nova is finishing the previous turn. Please send your text in a moment.'); return; }
+  // Typing is a full alternative to voice. Stop any live listening/playback before starting this turn.
+  if (sessionActive) endSession();
+  ttsRunId++;
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  if (activeTtsAbortController) activeTtsAbortController.abort();
+  if (activeTtsStop) activeTtsStop();
+  if (activeTtsAudio) { activeTtsAudio.pause(); activeTtsAudio = null; }
+  busy = true;
+  $('chatSend').disabled = true;
+  $('chatInput').disabled = true;
+  $('mode').textContent = 'CHAT';
+  $('sub').textContent = 'Nova is reading your message…';
+  setStatus('Sending text message…', true);
+  setVoiceState('thinking');
+  let turnId = '';
+  const startedAt = performance.now();
+  try {
+    const form = new FormData();
+    form.append('message', text);
+    form.append('language', selectedLanguage());
+    form.append('history', JSON.stringify(sessionHistory.slice(-40)));
+    form.append('mode', activeMode);
+    turnId = (window.crypto && typeof window.crypto.randomUUID === 'function' ? window.crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`);
+    form.append('client_turn_id', turnId);
+    const response = await fetch('/api/chat', { method: 'POST', body: form });
+    const data = await response.json().catch(() => ({}));
+    console.info('[NOVA_LATENCY]', JSON.stringify({ stage: 'chat_round_trip', turn_id: turnId, client_ms: Math.round(performance.now() - startedAt), server_ms: data.latency_ms?.total_ms ?? null, transcription_ms: data.latency_ms?.transcription_ms ?? null, chat_ms_total: data.latency_ms?.chat_ms_total ?? null, chat_calls: data.latency_ms?.chat_calls ?? null, tool_ms_total: data.latency_ms?.tool_ms_total ?? null, tool_calls: data.latency_ms?.tool_calls ?? null, outcome: response.ok ? 'ok' : 'http_error' }));
+    if (!response.ok) throw new Error(data.detail || data.message || `Request failed (${response.status})`);
+    const reply = (data.reply || '').trim();
+    if (!reply) throw new Error('Nova returned an empty reply. Please try again.');
+    await applySpokenBookingDetails(text);
+    addMessage('user', text);
+    addMessage('assistant', reply);
+    if (!data.out_of_scope) {
+      sessionHistory.push({ role: 'user', content: text }, { role: 'assistant', content: reply });
+      sessionHistory = sessionHistory.slice(-40);
+    }
+    $('chatInput').value = '';
+    $('sub').textContent = 'Text reply ready. Continue by typing, or start a voice session.';
+    $('mode').textContent = 'CHAT READY';
+    setVoiceState('');
+    setStatus('Text reply ready', true);
+  } catch (error) {
+    console.warn('[NOVA_LATENCY]', JSON.stringify({ stage: 'chat_round_trip', turn_id: turnId || null, client_ms: Math.round(performance.now() - startedAt), outcome: 'error' }));
+    addMessage('assistant', 'Error: ' + (error.message || 'Could not send the message.'));
+    $('sub').textContent = 'Your typed message is still in the box; check the newest log file if this persists.';
+    $('mode').textContent = 'CHAT ERROR';
+    setStatus('Text message failed');
+    setVoiceState('');
+  } finally {
+    busy = false;
+    $('chatSend').disabled = false;
+    $('chatInput').disabled = false;
+    $('chatInput').focus({ preventScroll: true });
+    if (!sessionActive && $('mode').textContent === 'THINKING') $('mode').textContent = 'READY';
+  }
+}
+$('chatForm').addEventListener('submit', sendTextMessage);
+$('chatInput').addEventListener('keydown', event => {
+  if (event.key === 'Enter' && !event.shiftKey) {
+    event.preventDefault();
+    $('chatForm').requestSubmit();
+  }
+});
+
+function interruptAndSpeak() {
+  if (!sessionActive) return;
+  // Invalidate the current speech run first so no delayed TTS fallback can start again.
+  interruptRequested = true;
+  ttsRunId++;
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  if (activeTtsAbortController) activeTtsAbortController.abort();
+  if (activeTtsStop) activeTtsStop();
+  if (activeTtsAudio) { activeTtsAudio.pause(); activeTtsAudio = null; }
+  $('interrupt').disabled = true;
+  $('sub').textContent = 'Stopped. I’m listening — go ahead.';
+  setStatus('Interrupted — switching to listening', true);
+  $('mode').textContent = 'LISTENING';
+  setVoiceState('recording');
+  // Wait for the in-flight speak promise to settle, then reopen the microphone immediately.
+  // startRecording() guards against duplicates; sendRecording's finally uses the same guard.
+  const resume = () => {
+    if (!sessionActive || recording) return;
+    if (busy) { setTimeout(resume, 40); return; }
+    startRecording().catch(err => {
+      addMessage('assistant', 'Microphone could not resume: ' + (err.message || err));
+      setStatus('Microphone unavailable');
+    });
+  };
+  setTimeout(resume, 30);
+}
+function endSession() {
+  sessionActive = false; ttsRunId++;
+  if (hardStopTimer) clearTimeout(hardStopTimer); hardStopTimer = 0;
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  if (activeTtsAbortController) activeTtsAbortController.abort();
+  if (activeTtsAudio) { activeTtsAudio.pause(); activeTtsAudio = null; }
+  if (recording && recorder) { discardCurrent = true; recording = false; stopVad(); try { recorder.stop(); } catch {} }
+  else { stream?.getTracks().forEach(t => t.stop()); stream = null; stopVad(); }
+  $('start').disabled = false; $('stop').disabled = true; $('interrupt').disabled = true; $('endSession').disabled = true;
+  $('mode').textContent = 'SESSION ENDED'; $('sub').textContent = 'Session ended. Start a new session to continue talking.'; setStatus('Session ended'); setVoiceState('');
+}
+$('start').addEventListener('click', startSession);
+$('stop').addEventListener('click', () => finishRecording('manual'));
+$('endSession').addEventListener('click', endSession);
+$('interrupt').addEventListener('click', interruptAndSpeak);
+$('clearChat').addEventListener('click', () => {
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  if (activeTtsAudio) { activeTtsAudio.pause(); activeTtsAudio = null; }
+  sessionHistory = []; $('messages').replaceChildren();
+  const empty = document.createElement('div'); empty.id = 'empty'; empty.className = 'empty'; empty.textContent = 'Your conversation will appear here after your first message.'; $('messages').append(empty);
+  $('mode').textContent = sessionActive ? 'SESSION ON' : 'READY'; setVoiceState(''); setStatus(sessionActive ? 'Session active' : 'Ready when you are');
+});
+
+// Hotel booking UI: all database operations go through the FastAPI backend.
+const hotelState = { rooms: [], selectedRoomId: null };
+const todayISO = () => {
+    const d = new Date();
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+    return d.toISOString().slice(0, 10);
+};
+$('checkIn').min = todayISO();
+$('checkIn').value = todayISO();
+const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
+tomorrow.setMinutes(tomorrow.getMinutes() - tomorrow.getTimezoneOffset());
+$('checkOut').min = tomorrow.toISOString().slice(0, 10);
+$('checkOut').value = tomorrow.toISOString().slice(0, 10);
+$('checkIn').addEventListener('change', () => {
+    const d = new Date($('checkIn').value + 'T12:00:00');
+    d.setDate(d.getDate() + 1);
+    const minOut = `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    $('checkOut').min = minOut;
+    if (!$('checkOut').value || $('checkOut').value <= $('checkIn').value) $('checkOut').value = minOut;
+    resetRoomChoices();
+});
+$('checkOut').addEventListener('change', resetRoomChoices);
+$('guestCount').addEventListener('change', resetRoomChoices);
+function showBookingMessageBase(message, ok = false) {
+    const el = $('bookingMessage');
+    el.textContent = message;
+    el.className = 'booking-message show ' + (ok ? 'ok' : 'err');
+}
+function resetRoomChoices() {
+    hotelState.rooms = [];
+    hotelState.selectedRoomId = null;
+    $('roomChoice').replaceChildren(new Option('Check availability first', ''));
+    $('roomResults').replaceChildren();
+    $('bookRoom').disabled = true;
+}
+async function apiRequest(url, options = {}) {
+    const response = await fetch(url, { ...options, headers: { 'Content-Type': 'application/json', ...(options.headers || {}) } });
+    let data;
+    try { data = await response.json(); } catch { data = {}; }
+    if (!response.ok) {
+        const detail = data.detail;
+        throw new Error(Array.isArray(detail) ? detail.map(x => x.msg).join('; ') : (detail || `Request failed (${response.status})`));
+    }
+    return data;
+}
+function money(value) { return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 }).format(value); }
+async function searchRooms() {
+    const checkIn = $('checkIn').value, checkOut = $('checkOut').value;
+    if (!checkIn || !checkOut || checkOut <= checkIn) { showBookingMessage('Check-out date must be after check-in.'); return; }
+    $('searchRooms').disabled = true;
+    $('searchRooms').textContent = 'Searching…';
+    try {
+        const query = new URLSearchParams({ check_in: checkIn, check_out: checkOut, guests: $('guestCount').value });
+        const data = await apiRequest('/api/hotels/rooms?' + query.toString());
+        hotelState.rooms = data.rooms;
+        hotelState.selectedRoomId = null;
+        $('roomChoice').replaceChildren(new Option(data.rooms.length ? 'Choose a room' : 'No rooms available', ''));
+        $('roomResults').replaceChildren();
+        for (const room of data.rooms) {
+            const option = new Option(`${room.room_type} · ${money(room.price_per_night)}/night · Room ${room.room_number}`, String(room.id));
+            $('roomChoice').add(option);
+            const card = document.createElement('div'); card.className = 'room-item';
+            const top = document.createElement('div'); top.className = 'room-top';
+            const info = document.createElement('div');
+            const name = document.createElement('div'); name.className = 'room-name'; name.textContent = `${room.room_type} · Room ${room.room_number}`;
+            const meta = document.createElement('div'); meta.className = 'room-meta'; meta.textContent = `${room.description} Sleeps up to ${room.capacity}.`;
+            info.append(name, meta);
+            const price = document.createElement('div'); price.className = 'room-price'; price.textContent = `${money(room.price_per_night)} / night`;
+            top.append(info, price); card.append(top);
+            const choose = document.createElement('button'); choose.className = 'btn secondary'; choose.type = 'button'; choose.textContent = 'Choose this room';
+            choose.addEventListener('click', () => { $('roomChoice').value = String(room.id); hotelState.selectedRoomId = room.id; $('bookRoom').disabled = false; document.querySelectorAll('#roomResults button').forEach(b => { b.textContent = 'Choose this room'; }); choose.textContent = 'Selected ✓'; });
+            card.append(choose); $('roomResults').append(card);
+        }
+        showBookingMessage(data.rooms.length ? `${data.count} room(s) available for ${checkIn} to ${checkOut}.` : 'No rooms available for those dates and guest count. Try different dates.', Boolean(data.rooms.length));
+    } catch (error) { showBookingMessage(error.message); }
+    finally { $('searchRooms').disabled = false; $('searchRooms').textContent = 'Check availability'; }
+}
+$('searchRooms').addEventListener('click', searchRooms);
+
+function spokenDateToISO(value) {
+    // Whisper may return Indian digits and Hindi month names, sometimes with small ASR typos.
+    const digitMap = {'०':'0','१':'1','२':'2','३':'3','४':'4','५':'5','६':'6','७':'7','८':'8','९':'9'};
+    const t = value.trim().toLowerCase().replace(/[०-९]/g, ch => digitMap[ch] || ch);
+    const now = new Date(); now.setHours(0,0,0,0);
+    const localISO = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+    if (/\bday after tomorrow\b|\bparso\b|परसों/.test(t)) { now.setDate(now.getDate()+2); return localISO(now); }
+    if (/\btoday\b|\baaj\b|आज/.test(t)) return localISO(now);
+    if (/\btomorrow\b|\bkal\b|कल/.test(t)) { now.setDate(now.getDate()+1); return localISO(now); }
+    const iso = t.match(/\b(20\d{2})-(\d{1,2})-(\d{1,2})\b/);
+    if (iso) return `${iso[1]}-${iso[2].padStart(2,'0')}-${iso[3].padStart(2,'0')}`;
+    const numeric = t.match(/\b(\d{1,2})[\/.-](\d{1,2})[\/.-](20\d{2})\b/);
+    if (numeric) return `${numeric[3]}-${numeric[2].padStart(2,'0')}-${numeric[1].padStart(2,'0')}`;
+    const months = {jan:1,january:1,feb:2,february:2,mar:3,march:3,apr:4,april:4,may:5,jun:6,june:6,jul:7,july:7,aug:8,august:8,sep:9,sept:9,september:9,oct:10,october:10,nov:11,november:11,dec:12,december:12};
+    let m = t.match(/\b(\d{1,2})(?:st|nd|rd|th)?\s+(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t|tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+(20\d{2})\b/i);
+    if (!m) { const rev = t.match(/\b(jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t|tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+(\d{1,2})(?:st|nd|rd|th)?[,]?\s+(20\d{2})\b/i); if (rev) m=[rev[0],rev[2],rev[1],rev[3]]; }
+    if (m) { const month = months[m[2].toLowerCase()]; return `${m[3]}-${String(month).padStart(2,'0')}-${String(m[1]).padStart(2,'0')}`; }
+    const hindiMonths = {
+        'जनवरी':1, 'फरवरी':2, 'फ़रवरी':2, 'मार्च':3, 'अप्रैल':4, 'मई':5, 'जून':6,
+        'जुलाई':7, 'अगस्त':8, 'सितंबर':9, 'सितम्बर':9,
+        'अक्टूबर':10, 'अक्टवर':10, 'अक्तूबर':10,
+        'नवंबर':11, 'नवम्बर':11, 'दिसंबर':12, 'दिसम्बर':12
+    };
+    const hindi = t.match(/(?:^|[^0-9])(\d{1,2})\s+([\u0900-\u097F]{2,20})\s+(20\d{2})(?!\d)/);
+    if (hindi && hindiMonths[hindi[2]]) {
+        const day = Number(hindi[1]), month = hindiMonths[hindi[2]], year = Number(hindi[3]);
+        const check = new Date(year, month - 1, day);
+        if (check.getFullYear() === year && check.getMonth() === month - 1 && check.getDate() === day) {
+            return `${year}-${String(month).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+        }
+    }
+    return null;
+}
+async function applySpokenBookingDetails(transcript) {
+    const raw = (transcript || '').trim(); const t = raw.toLowerCase();
+    if (!raw) return null;
+    let changed = [];
+    const dates = [];
+    const dateCandidates = [];
+    const datePatterns = [
+        /[0-9०-९]{4}-[0-9०-९]{1,2}-[0-9०-९]{1,2}/g,
+        /[0-9०-९]{1,2}[\/.-][0-9०-९]{1,2}[\/.-]20[0-9०-९]{2}/g,
+        /\b\d{1,2}(?:st|nd|rd|th)?\s+(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t|tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+20\d{2}\b/ig,
+        /\b(?:jan(?:uary)?|feb(?:ruary)?|mar(?:ch)?|apr(?:il)?|may|jun(?:e)?|jul(?:y)?|aug(?:ust)?|sep(?:t|tember)?|oct(?:ober)?|nov(?:ember)?|dec(?:ember)?)\s+\d{1,2}(?:st|nd|rd|th)?[,]?\s+20\d{2}\b/ig,
+        /[0-9०-९]{1,2}\s+[\u0900-\u097F]{2,20}\s+20[0-9०-९]{2}/g,
+    ];
+    for (const re of datePatterns) {
+        for (const m of raw.matchAll(re)) {
+            const iso = spokenDateToISO(m[0]);
+            if (iso) dateCandidates.push({ index: m.index ?? 0, iso });
+        }
+    }
+    // Preserve the transcript's order even when it mixes absolute and relative dates.
+    // This only fills the form; the server model still resolves ambiguity before a booking.
+    const relativeDatePattern = /\bday after tomorrow\b|\btoday\b|\btomorrow\b|\baaj\b|\bkal\b|\bparso\b|आज|कल|परसों/gi;
+    for (const m of raw.matchAll(relativeDatePattern)) {
+        const iso = spokenDateToISO(m[0]);
+        if (iso) dateCandidates.push({ index: m.index ?? 0, iso });
+    }
+    dateCandidates.sort((a, b) => a.index - b.index);
+    for (const candidate of dateCandidates) {
+        if (!dates.includes(candidate.iso)) dates.push(candidate.iso);
+    }
+    if (dates.length >= 2) {
+        $('checkIn').value = dates[0]; $('checkOut').value = dates[1]; changed.push('dates');
+    } else if (dates.length === 1) {
+        const mentionsCheckIn = /\bcheck.?in\b|चेक.?इन/i.test(raw);
+        const mentionsCheckOut = /\bcheck.?out\b|चेक.?आउट/i.test(raw);
+        const previousAssistant = [...sessionHistory].reverse().find(m => m.role === 'assistant')?.content || '';
+        const askedCheckIn = /\bcheck.?in\b|चेक.?इन/i.test(previousAssistant);
+        const askedCheckOut = /\bcheck.?out\b|चेक.?आउट/i.test(previousAssistant);
+        const fillCheckOut = mentionsCheckOut || (!mentionsCheckIn && askedCheckOut && !askedCheckIn);
+        if (fillCheckOut) { $('checkOut').value = dates[0]; changed.push('check-out'); }
+        else { $('checkIn').value = dates[0]; changed.push('check-in'); }
+    }
+    const guestMatch = t.match(/\b(\d{1,2})\s*(?:guests?|people|persons|adults|log|logo|aadmi|admi)\b/i) || t.match(/(\d{1,2})\s*(?:मेहमान|लोग)/) || t.match(/\b(?:for|with)\s+(one|two|three|four|five|six|1|2|3|4|5|6)\s*(?:guest|guests|people|persons|adults)?\b/i);
+    if (guestMatch) { const words={one:1,two:2,three:3,four:4,five:5,six:6}; const n=Number(guestMatch[1]) || words[guestMatch[1].toLowerCase()]; if (n>=1&&n<=6) { $('guestCount').value=String(n); changed.push('guest count'); } }
+    const phone = raw.match(/(?:\+?91[\s-]?)?[6-9]\d(?:[\s-]?\d){8,9}/);
+    if (phone) { $('guestPhone').value=phone[0].replace(/[\s-]/g,''); changed.push('phone'); }
+    const nameMatch = raw.match(/(?:\b(?:my name is|name is|mera naam)|मेरा नाम)\s+([A-Za-z][A-Za-z .'-]{1,70}?)(?:\s+(?:hai|है|and|phone|mobile|number)\b|[,.;]|$)/i);
+    if (nameMatch) { $('guestName').value=nameMatch[1].trim(); changed.push('name'); }
+    // Spoken slot updates invalidate old inventory. Do not issue a second availability
+    // request from the browser: the voice tool already performs the authoritative lookup.
+    if (changed.some(item => ['dates', 'check-in', 'check-out'].includes(item))) {
+        $('checkIn').dispatchEvent(new Event('change', { bubbles: true }));
+    } else if (changed.includes('guest count')) {
+        resetRoomChoices();
+    }
+    const roomNumber = t.match(/\broom\s*(?:number\s*)?(\d{3})\b/) || t.match(/\b(?:room|kamra|कमरा)\s*(101|201|301|401)\b/);
+    if (roomNumber && hotelState.rooms.length) {
+        const room = hotelState.rooms.find(r => String(r.room_number) === roomNumber[1]);
+        if (room) { $('roomChoice').value=String(room.id); hotelState.selectedRoomId=room.id; $('bookRoom').disabled=false; changed.push('room choice'); }
+    } else if (/(?:first room|pehla room|पहला कमरा|पहला रूम)/i.test(raw) && hotelState.rooms.length) {
+        const room=hotelState.rooms[0]; $('roomChoice').value=String(room.id); hotelState.selectedRoomId=room.id; $('bookRoom').disabled=false; changed.push('room choice');
+    }
+    // Actual booking creation and availability checks are handled by server-side tools.
+    return changed.length ? changed : null;
+}
+
+$('roomChoice').addEventListener('change', () => {
+    const id = Number($('roomChoice').value);
+    hotelState.selectedRoomId = hotelState.rooms.some(r => r.id === id) ? id : null;
+    $('bookRoom').disabled = !hotelState.selectedRoomId;
+});
+$('bookingForm').addEventListener('submit', async event => {
+    event.preventDefault();
+    if (!hotelState.selectedRoomId) { showBookingMessage('Check availability and choose a room first.'); return; }
+    $('bookRoom').disabled = true; $('bookRoom').textContent = 'Saving booking…';
+    const payload = {
+        guest_name: $('guestName').value.trim(), phone: $('guestPhone').value.trim(),
+        room_id: hotelState.selectedRoomId, check_in: $('checkIn').value, check_out: $('checkOut').value,
+        guests: Number($('guestCount').value), special_requests: $('guestRequests').value.trim()
+    };
+    try {
+        const data = await apiRequest('/api/hotels/bookings', { method: 'POST', body: JSON.stringify(payload) });
+        const b = data.booking;
+        showBookingMessage(`Booking confirmed!
+Confirmation: ${b.booking_code}
+Room: ${b.room_type} (${b.room_number})
+Dates: ${b.check_in} → ${b.check_out}
+Total: ${money(b.total_price)}
+Save your confirmation code. Your name and mobile number are used for lookup/cancellation.`, true);
+        $('lookupName').value = payload.guest_name;
+        $('lookupPhone').value = payload.phone;
+        await lookupBookings();
+        resetRoomChoices();
+    } catch (error) { showBookingMessage(error.message); }
+    finally { $('bookRoom').textContent = 'Confirm booking'; $('bookRoom').disabled = !hotelState.selectedRoomId; }
+});
+async function lookupBookings() {
+    const guestName = $('lookupName').value.trim();
+    const phone = $('lookupPhone').value.trim();
+    if (guestName.length < 2 || phone.replace(/\D/g, '').length < 10) { showBookingMessage('Enter the guest name and a valid mobile number.'); return; }
+    $('lookupBookings').disabled = true;
+    try {
+        const query = new URLSearchParams({ guest_name: guestName, phone });
+        const data = await apiRequest('/api/hotels/bookings?' + query.toString());
+        const container = $('bookingResults'); container.replaceChildren();
+        if (!data.bookings.length) { const empty = document.createElement('div'); empty.className = 'room-item room-meta'; empty.textContent = 'No bookings found for that name and mobile number.'; container.append(empty); return; }
+        for (const b of data.bookings) {
+            const card = document.createElement('div'); card.className = 'booking-item';
+            const title = document.createElement('div'); title.className = 'room-name'; title.textContent = `${b.booking_code} · ${b.room_type} (Room ${b.room_number})`;
+            const details = document.createElement('div'); details.className = 'room-meta'; details.textContent = `${b.check_in} → ${b.check_out} · ${b.guests} guest(s) · ${money(b.total_price)} · Status: ${b.status}`;
+            card.append(title, details);
+            if (b.special_requests) { const request = document.createElement('div'); request.className = 'room-meta'; request.textContent = 'Requests: ' + b.special_requests; card.append(request); }
+            if (b.status === 'confirmed') {
+                const actions = document.createElement('div'); actions.className = 'booking-actions';
+                const cancel = document.createElement('button'); cancel.type = 'button'; cancel.className = 'btn secondary danger'; cancel.textContent = 'Cancel booking';
+                cancel.addEventListener('click', async () => {
+                    if (!confirm(`Cancel booking ${b.booking_code}?`)) return;
+                    cancel.disabled = true;
+                    try { await apiRequest(`/api/hotels/bookings/${encodeURIComponent(b.booking_code)}/cancel?phone=${encodeURIComponent(phone)}&guest_name=${encodeURIComponent(guestName)}`, { method: 'PATCH' }); showBookingMessage(`Booking ${b.booking_code} cancelled.`, true); await lookupBookings(); resetRoomChoices(); }
+                    catch (error) { showBookingMessage(error.message); cancel.disabled = false; }
+                });
+                actions.append(cancel); card.append(actions);
+            }
+            container.append(card);
+        }
+    } catch (error) { showBookingMessage(error.message); }
+    finally { $('lookupBookings').disabled = false; }
+}
+$('lookupBookings').addEventListener('click', lookupBookings);
+
+
+// Keep hotel booking and booking lookup on their dedicated tabs.
+function showBookingMessage(message,ok=false){showBookingMessageBase(message,ok);const target=$('manageMessage');if(target){target.textContent=message;target.className='booking-message show '+(ok?'ok':'err')}}
+
+
+
+// Premium landing-page controls. All booking and chat requests still use the existing handlers above.
+function closeSiteNav() {
+  const nav = $('siteNav');
+  const toggle = $('navToggle');
+  if (nav) nav.classList.remove('open');
+  if (toggle) toggle.setAttribute('aria-expanded', 'false');
+}
+function openAssistant() {
+  const modal = $('assistantModal');
+  if (!modal) return;
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+  closeSiteNav();
+  const input = $('chatInput');
+  if (input) window.setTimeout(() => input.focus({ preventScroll: true }), 180);
+}
+function closeAssistant() {
+  const modal = $('assistantModal');
+  if (!modal) return;
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+}
+document.querySelectorAll('[data-open-assistant]').forEach(button => button.addEventListener('click', () => {
+  if (button.dataset.prompt) showPanel(button.dataset.mode || 'booking');
+  openAssistant();
+}));
+document.querySelectorAll('[data-close-assistant]').forEach(button => button.addEventListener('click', closeAssistant));
+$('assistantModal')?.addEventListener('click', event => {
+  if (event.target.classList.contains('assistant-backdrop')) closeAssistant();
+});
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') { closeAssistant(); closeSiteNav(); }
+});
+$('navToggle')?.addEventListener('click', () => {
+  const nav = $('siteNav');
+  const open = nav.classList.toggle('open');
+  $('navToggle').setAttribute('aria-expanded', String(open));
+});
+document.querySelectorAll('#siteNav a[href^="#"]').forEach(link => link.addEventListener('click', closeSiteNav));
+
+function syncSearchBarFromBooking() {
+  if (!$('heroCheckIn')) return;
+  $('heroCheckIn').value = $('checkIn').value;
+  $('heroCheckOut').value = $('checkOut').value;
+  $('heroGuests').value = $('guestCount').value;
+  $('heroCheckIn').min = $('checkIn').min;
+  $('heroCheckOut').min = $('checkOut').min;
+}
+syncSearchBarFromBooking();
+$('checkIn')?.addEventListener('change', syncSearchBarFromBooking);
+$('checkOut')?.addEventListener('change', syncSearchBarFromBooking);
+$('guestCount')?.addEventListener('change', syncSearchBarFromBooking);
+$('heroCheckIn')?.addEventListener('change', () => {
+  const start = $('heroCheckIn').value;
+  $('heroCheckOut').min = start;
+  if ($('heroCheckOut').value <= start) {
+    const next = new Date(start + 'T12:00:00');
+    next.setDate(next.getDate() + 1);
+    $('heroCheckOut').value = `${next.getFullYear()}-${String(next.getMonth()+1).padStart(2,'0')}-${String(next.getDate()).padStart(2,'0')}`;
+  }
+});
+$('heroSearchForm')?.addEventListener('submit', event => {
+  event.preventDefault();
+  const start = $('heroCheckIn').value;
+  const end = $('heroCheckOut').value;
+  if (!start || !end || end <= start) {
+    const notice = $('heroSearchNotice');
+    notice.textContent = 'Choose a check-out date after your check-in date.';
+    notice.classList.add('show');
+    $('heroCheckOut').focus();
+    return;
+  }
+  $('heroSearchNotice').textContent = '';
+  $('heroSearchNotice').classList.remove('show');
+  $('checkIn').value = start;
+  $('checkOut').value = end;
+  $('guestCount').value = $('heroGuests').value;
+  // Trigger the existing check-in validation and clear any stale room selection before searching.
+  $('checkIn').dispatchEvent(new Event('change', { bubbles: true }));
+  $('checkOut').value = end;
+  $('guestCount').value = $('heroGuests').value;
+  showPanel('booking');
+  $('bookingWorkspace').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  window.setTimeout(() => searchRooms(), 260);
+});
+
+// A clear, non-intrusive scroll reveal; reduced-motion preferences are respected.
+if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(element => revealObserver.observe(element));
+} else {
+  document.querySelectorAll('.reveal').forEach(element => element.classList.add('is-visible'));
+}
+
+</script>
+<script>
+// These metadata details are decorative only; no booking state is stored in the browser.
+const footerYear = document.getElementById('footerYear');
+if (footerYear) footerYear.textContent = String(new Date().getFullYear());
+document.querySelectorAll('[data-open-assistant][data-prompt]').forEach(button => button.addEventListener('click', () => {
+  const prompt = button.dataset.prompt;
+  if ($('chatInput') && prompt) {
+    $('chatInput').value = prompt;
+    $('chatInput').focus({ preventScroll: true });
+  }
+}));
+</script>
+</body>
+</html>

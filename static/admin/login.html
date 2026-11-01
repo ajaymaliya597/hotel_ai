@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nova Hotel · Admin Login</title><link rel="stylesheet" href="/admin/assets/style.css"></head>
+<body><main class="shell"><section class="panel">
+<div class="brand"><div class="logo">N</div><div><strong>Nova Hotel</strong><small>ADMINISTRATION</small></div></div>
+<div class="intro"><span class="eyebrow">SECURE ACCESS</span><h1>Welcome back.</h1><p>Sign in to manage hotel reservations and operations.</p></div>
+<form id="loginForm"><label for="email">Email address</label><input id="email" type="email" placeholder="admin@company.com" autocomplete="username" required>
+<label for="password">Password</label><input id="password" type="password" placeholder="Enter your password" autocomplete="current-password" required>
+<div class="rowline"><span></span><a href="#" id="forgotLink">Forgot password?</a></div>
+<button type="submit">Sign in <span>→</span></button><p class="message" id="loginMessage" role="status"></p></form>
+<footer>Protected admin access · Use your registered account</footer></section>
+<aside class="visual"><div class="orb orb1"></div><div class="orb orb2"></div><div class="visual-content"><span class="eyebrow light">CONTROL CENTER</span><h2>Everything in<br>one clear view.</h2><p>One secure workspace for hotel operations and reservations.</p><div class="mini-card"><div class="dot"></div><div><b>Workspace security</b><small>Your admin access is protected.</small></div><span class="shield">✓</span></div></div><div class="visual-bottom">NOVA HOTEL / ADMIN PORTAL <span>01 — 01</span></div></aside>
+</main><div class="modal-backdrop" id="forgotModal" hidden><section class="modal"><button class="close" id="closeModal" aria-label="Close">×</button><span class="eyebrow">ACCOUNT RECOVERY</span><h2>Forgot your password?</h2><p>Enter your admin email address. We'll send a one-time password reset link to that address.</p><form id="forgotForm"><label for="recoveryEmail">Admin email address</label><input id="recoveryEmail" type="email" placeholder="admin@yourhotel.com" autocomplete="email" required><button type="submit">Send reset link <span>→</span></button><p class="message" id="forgotMessage" role="status"></p></form></section></div>
+<script src="/admin/assets/login.js" defer></script></body></html>
